@@ -1,10 +1,14 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Home from './components/home/Home';
 function App() {
   return (
-    <div>
-      <h1>Cloth Avenue</h1>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
