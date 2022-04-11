@@ -1,0 +1,23 @@
+.banner-container{
+    background-image: url('https://cdn.shopify.com/s/files/1/2617/9878/files/avenue-shopify-theme_171ae8ea-b4b8-4042-849d-a4fc187ecb48_1600x.jpg?v=1623794917');
+    display: flex;
+    padding: 5% 0;
+    flex-direction: column;
+    justify-content: center;
+    color: #ffffff;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.18);
+    background-blend-mode: multiply;
+}
+.banner-container button{
+    width: 180px;
+    margin: 0 auto;
+    border: 1px solid white;
+    color: white;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0);
+}
+.banner-container button:hover{
+    background-color: #e32e00;
+    border: 1px solid #e32e00;
+}

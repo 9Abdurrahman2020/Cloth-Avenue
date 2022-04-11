@@ -8,7 +8,6 @@ import './topNavbar.css';
 
 const TopNavbar = () => {
     
-
     return (
         <div>
            <div className="top-nav-container">

@@ -7,9 +7,11 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: #ffffff;
 }
 .logo img{
-    width: 100px;
+    width: 120px;
+    height: 80px;
 }
 .nav-links{
     display: flex;
@@ -38,12 +40,16 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background-color: #ffffff;
 }
 .topNab-search2{
     display: none;
 }
 .mobile,.responsive-nav-menu {
     display: none;
+}
+.header{
+    border-bottom: 1px solid gainsboro;
 }
 @media  screen and (max-width: 768px) {
     .navigation-container{
