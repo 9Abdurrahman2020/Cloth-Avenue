@@ -1,0 +1,10 @@
+.offer-container{
+    background-color: #efefef;
+    cursor: grab;
+}
+.offer-slide{
+    display: flex;
+    justify-content: center;
+    color: #6b6f81;
+    padding: 10px;
+}
