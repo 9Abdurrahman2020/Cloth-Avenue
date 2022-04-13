@@ -1,0 +1,12 @@
+.women-discount-container{
+    background-image: url('https://cdn.shopify.com/s/files/1/2617/9878/files/avenue-clothing-shopify-filter-theme_45a29f69-2c28-4284-97fa-182a3dc01866_1600x.jpg?v=1623795444');
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.15);
+    background-blend-mode: multiply;
+}
+@media screen and (max-width: 768px) {
+    .women-discount-container{
+        background-position: center;
+        text-align: center;
+    }
+}

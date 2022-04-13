@@ -5,6 +5,7 @@ import DiscountBanner1 from './discountBanner1/DiscountBanner1';
 import FilterProduct from './filterProduct/FilterProduct';
 import ForCategory from './forCategory/ForCategory';
 import Offer from './offer/Offer';
+import WomenDiscount from './womenDiscount/WomenDiscount';
 
 const Home = () => {
     return (
@@ -15,6 +16,7 @@ const Home = () => {
             <Collections/>
             <DiscountBanner1/>
             <FilterProduct/>
+            <WomenDiscount/>
         </div>
     );
 };
