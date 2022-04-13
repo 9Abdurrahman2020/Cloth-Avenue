@@ -1,0 +1,24 @@
+.filter-product-container{
+    background-image: url('https://cdn.shopify.com/s/files/1/2617/9878/files/avenue-clothing-shopify-filtering-theme_4514dca7-3ac2-488b-9584-0f72ae741c00_1600x.jpg?v=1623795417');
+    color: #ffffff;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.15);
+    background-blend-mode: multiply;
+}
+.search-button{
+    width: 250px;
+    padding: 7px 0;
+    margin: 0 auto;
+    border: 0;
+    background-color: #e32e00;
+    color: #ffffff;
+    transition: 0.2s;
+}
+.search-button:hover{
+    background-color: #f83707;
+}
+@media screen and (max-width:768px) {
+    .search-button{
+        width: 100%;
+    }
+}
