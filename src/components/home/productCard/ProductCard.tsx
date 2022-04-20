@@ -1,20 +1,21 @@
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Row } from 'react-bootstrap';
+import { IProduct } from '../../../features/Types';
 import './productCard.css';
 
-const  ProductCard = () => {
+const  ProductCard = ({data}:{data:IProduct}) => {
     return (
-        <div className="container page-wrapper">
+        <div className="col-12 col-sm-6 col-md-4 col-lg-3 page-wrapper">
   <div className="page-inner">
     <div className="row">
       <div className="el-wrapper">
         <div className="box-up">
-          <img className="img" src="https://cdn.shopify.com/s/files/1/2617/9878/products/avenue-shopify-theme-womens-tops-9_600x.jpg?v=1534170910" alt=""/>
+          <img className="img" src={data.img} alt=""/>
           <div className="img-info">
             <div className="info-inner">
-              <span className="p-name">I feel like Pablo</span>
-              <span className="p-company">Yeezy</span>
+              <span className="p-name">{data.title}</span>
+              <span className="p-company">{data.brand}</span>
             </div>
             <div className="a-size">
                 Available sizes: <span className="size">S , M , L , XL</span>
@@ -28,7 +29,7 @@ const  ProductCard = () => {
           </div>
 
           <div className="cart">
-            <span className="price">$120</span>
+            <span className="price">${data.price}</span>
             <span className="add-to-cart">
               <span className="txt">
                   <Row style={{justifyContent:"space-between"}}>

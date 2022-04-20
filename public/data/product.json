@@ -506,7 +506,7 @@
     {
         "id":"42",
         "title":"Lace Tank Top",
-        "price": 18.99,
+        "price": 18.75,
         "brand":"KD",
         "stock": 5,
         "rating":4.6,
@@ -530,7 +530,7 @@
     {
         "id":"44",
         "title":"Floral Tank Top",
-        "price": 18.99,
+        "price": 18.45,
         "brand":"KD",
         "stock": 2,
         "rating":4.7,
@@ -542,7 +542,7 @@
     {
         "id":"45",
         "title":"Basic Tank Top",
-        "price": 9.99,
+        "price": 9.95,
         "brand":"KD",
         "stock": 0,
         "rating":4.5,
@@ -850,5 +850,5 @@
         "category":"shirts",
         "for": "kids",
         "img":"https://cdn.shopify.com/s/files/1/2617/9878/products/avenue-shopify-theme-girls-clothing-9_600x.jpg?v=1533743183"
-    },
+    }
 ]
