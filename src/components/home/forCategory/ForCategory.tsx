@@ -1,5 +1,8 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
+import { Pagination } from "swiper";
+import "swiper/css";
+import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 const ForCategory = () => {
@@ -8,6 +11,10 @@ const ForCategory = () => {
             <Swiper
         slidesPerView={1}
         spaceBetween={20}
+        pagination={{
+          dynamicBullets: true,
+        }}
+        modules={[Pagination]}
         breakpoints={{
             640: {
               slidesPerView: 1,
@@ -22,10 +29,7 @@ const ForCategory = () => {
               spaceBetween: 20,
             },
           }}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[]}
+          
         className="mySwiper"
       >
         <SwiperSlide>

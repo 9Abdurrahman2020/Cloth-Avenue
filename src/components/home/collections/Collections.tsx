@@ -27,8 +27,8 @@ const Collections = () => {
                 </div>
                 <div className="col-6 col-md-4 col-lg-3">
                     <div className='text-center'>
-                        <img className='w-100' src="https://cdn.shopify.com/s/files/1/2617/9878/products/avenue-shopify-theme-mens-accessories-18_320x.jpg?v=1579208629" alt="" />
-                        <p>Wallets</p>
+                        <img className='w-100' src="https://cdn.shopify.com/s/files/1/2617/9878/products/avenue-shopify-theme-mens-tops-34_600x.jpg?v=1533831979" alt="" />
+                        <p>Shirts</p>
                     </div>
                 </div>
                 <div className="col-6 col-md-4 col-lg-3">

@@ -8,15 +8,18 @@ const FilterProduct = () => {
     }
     const [ department, setDepartment ] = useState<string>();
     const [ searchData, setSearchData ] = useState<ISearch>({});
-    const onChangeHandler = (e:React.ChangeEvent<HTMLSelectElement>) =>{
+    const handleSetDepartment  = (e:React.ChangeEvent<HTMLSelectElement>):void =>{
         setDepartment(e.target.value)
+        onChangeHandler(e)
+    }
+    const onChangeHandler = (e:React.ChangeEvent<HTMLSelectElement>):void =>{
         const name:string = e.target.name;
         const value:string = e.target.value;
         const newData:{ [key: string]: string } = {...searchData};
         newData[name] = value;
         setSearchData(newData)
     }
-    const onSubmitHandler = (e:React.FormEvent<HTMLFormElement>)=>{
+    const onSubmitHandler = (e:React.FormEvent<HTMLFormElement>):void =>{
         e.preventDefault()
         console.log(searchData);
     }
@@ -28,7 +31,7 @@ const FilterProduct = () => {
                 <form onSubmit={onSubmitHandler} className='row'>
                     <div className="col-12 col-md-4">
                     <Form.Group className="mb-3">
-                        <Form.Select onChange={onChangeHandler} defaultValue="" required name="department">
+                        <Form.Select onChange={handleSetDepartment} defaultValue="" required name="department">
                             <option value="" disabled style={{display:"none"}}>Department...</option>
                             <option value="Man's">Man's</option>
                             <option value="Women's">Women's</option>
@@ -40,19 +43,32 @@ const FilterProduct = () => {
                     <Form.Group className="mb-3">
                         <Form.Select onChange={onChangeHandler} defaultValue="1" name="type" disabled={ !department && true}>
                             <option value="1" disabled style={{display:"none"}}>Product Type...</option>
-                            <option>T-Shirt</option>
-                            <option>Pants</option>
-                            <option>Jeans</option>
+                            { department === "Man's" && <>
+                            <option>T-Shirt</option> 
+                            <option>Shorts</option>
+                            <option>Jeans</option> 
+                            <option>Shirt</option> 
+                            </> }
+                            { department === "Women's" && <>
+                            <option>Dress</option> 
+                            <option>Tanks</option>
+                            <option>Blouse</option> 
+                            <option>Skirt</option> 
+                            </> }
+                            { department === "Kid's" && <>
+                            <option>Pants</option> 
+                            <option>Shirts</option>
+                            </> }
                         </Form.Select>
                     </Form.Group>
                     </div>
                     <div className="col-12 col-md-4">
                     <Form.Group className="mb-3">
-                        <Form.Select onChange={onChangeHandler} defaultValue="1" name="color" disabled={ !department && true}>
-                            <option value="1" disabled style={{display:"none"}}>Color...</option>
-                            <option>White</option>
-                            <option>Black</option>
-                            <option>Red</option>
+                        <Form.Select onChange={onChangeHandler} defaultValue="1" name="brand" disabled={ !department && true}>
+                            <option value="1" disabled style={{display:"none"}}>Brand...</option>
+                            <option>Copper Thompson</option>
+                            <option>Keystone</option>
+                            <option>KD</option>
                         </Form.Select>
                     </Form.Group>
                     </div>

@@ -5,6 +5,7 @@ import DiscountBanner1 from './discountBanner1/DiscountBanner1';
 import FilterProduct from './filterProduct/FilterProduct';
 import ForCategory from './forCategory/ForCategory';
 import Offer from './offer/Offer';
+import WomenCollections from './womenCollections/WomenCollections';
 import WomenDiscount from './womenDiscount/WomenDiscount';
 
 const Home = () => {
@@ -17,6 +18,7 @@ const Home = () => {
             <DiscountBanner1/>
             <FilterProduct/>
             <WomenDiscount/>
+            <WomenCollections/>
         </div>
     );
 };
