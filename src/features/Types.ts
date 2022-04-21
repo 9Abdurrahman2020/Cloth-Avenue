@@ -28,8 +28,11 @@ export interface InitialState {
     status: TStatus,
     womenSelectedCategory: TWomenSelectedCategory,
     women: IProduct[],
-    cart: ICart[]
+    cart: ICart[],
+    menSelectedCategory: TMenSelectedCategory,
+    men: IProduct[]
   }
 
 export type TWomenSelectedCategory = "tanks" | "dress" | "skirt";
+export type TMenSelectedCategory = "t-shirt" | "hoodie" | "jeans";
 export type TStatus= 'idle' | 'loading' | 'failed' | 'successful';

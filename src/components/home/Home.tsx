@@ -4,6 +4,7 @@ import Collections from './collections/Collections';
 import DiscountBanner1 from './discountBanner1/DiscountBanner1';
 import FilterProduct from './filterProduct/FilterProduct';
 import ForCategory from './forCategory/ForCategory';
+import MenCollections from './manCollection/ManCollection';
 import ManDiscount from './manDiscount/ManDiscount';
 import Offer from './offer/Offer';
 import WomenCollections from './womenCollections/WomenCollections';
@@ -21,6 +22,7 @@ const Home = () => {
             <WomenDiscount/>
             <WomenCollections/>
             <ManDiscount/>
+            <MenCollections/>
         </div>
     );
 };
