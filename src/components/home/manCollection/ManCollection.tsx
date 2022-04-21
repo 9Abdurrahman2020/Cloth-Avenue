@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { fetchProduct, setMenProduct, setMenSelectedCategory, setWomenProduct } from '../../../features/counter/storeSlice';
+import { fetchProduct, setMenProduct, setMenSelectedCategory } from '../../../features/counter/storeSlice';
 import { IProduct, TMenSelectedCategory } from '../../../features/Types';
 import ProductCard from '../productCard/ProductCard';
 
@@ -16,7 +16,7 @@ const MenCollections = () => {
         dispatch(fetchProduct());
     },[])
     useEffect( ()=>{
-        dispatch(setWomenProduct());
+        dispatch(setMenProduct());
     },[products])
     const handleCategorySelector = (selected:TMenSelectedCategory) =>{
         dispatch(setMenSelectedCategory(selected))

@@ -7,6 +7,8 @@ import ForCategory from './forCategory/ForCategory';
 import MenCollections from './manCollection/ManCollection';
 import ManDiscount from './manDiscount/ManDiscount';
 import Offer from './offer/Offer';
+import OurBrand from './ourBrand/OurBrand';
+import ServiceDemo from './serviceDemo/ServiceDemo';
 import WomenCollections from './womenCollections/WomenCollections';
 import WomenDiscount from './womenDiscount/WomenDiscount';
 
@@ -23,6 +25,8 @@ const Home = () => {
             <WomenCollections/>
             <ManDiscount/>
             <MenCollections/>
+            <OurBrand/>
+            <ServiceDemo/>
         </div>
     );
 };
