@@ -3,10 +3,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import FormControl from 'react-bootstrap/FormControl';
 import InputGroup from 'react-bootstrap/InputGroup';
+import { useAppSelector } from '../../../app/hooks';
+import { IProduct } from '../../../features/Types';
 import './topNavbar.css';
 
 
 const TopNavbar = () => {
+    const cart:IProduct[] = useAppSelector( state=> state.store.cart)
     
     return (
         <div>
@@ -27,7 +30,7 @@ const TopNavbar = () => {
                     </InputGroup>
                </div>
                <div className="topNab-other">
-                    <p title="cart"><FontAwesomeIcon className='me-1' style={{fontSize:"20px"}} icon={faBagShopping}/><sup>0</sup><span className='ms-2'>$0</span></p>
+                    <p title="cart"><FontAwesomeIcon className='me-1' style={{fontSize:"20px"}} icon={faBagShopping}/><sup>{cart.length}</sup><span className='ms-2'>$0</span></p>
                     <div className='vertical-line me-1'></div>
                     <p><span title="Login in" style={{fontSize:"20px"}}><FontAwesomeIcon icon={faUserCircle}/></span></p>
                     <div className='vertical-line me-1'></div>

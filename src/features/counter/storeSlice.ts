@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { InitialState, IProduct } from '../Types';
+import { ICart, InitialState, IProduct, TWomenSelectedCategory } from '../Types';
 
 
 const initialState: InitialState = {
@@ -7,6 +7,7 @@ const initialState: InitialState = {
   status: 'idle',
   womenSelectedCategory: "tanks",
   women: [],
+  cart: [],
 };
 
 // The function below is called a thunk and allows us to perform async logic. It
@@ -28,9 +29,8 @@ export const storeSlice = createSlice({
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
-    setWomenSelectedCategory: (state, action) =>{
+    setWomenSelectedCategory: (state, action:{type:string, payload: TWomenSelectedCategory}) =>{
       state.womenSelectedCategory = action.payload;
-      setWomenProduct()
     },
     setWomenProduct: (state) => {
       // Redux Toolkit allows us to write "mutating" logic in reducers. It
@@ -40,6 +40,14 @@ export const storeSlice = createSlice({
       if(state.products.length>0){
         state.women = state.products.filter( pd=> pd.for === "female" && pd.category === state.womenSelectedCategory)
       }
+    },
+    setCartProduct: (state,action:{type:string, payload: IProduct})=>{
+        if(!state.cart.find( p=> p.id === action.payload.id)){
+          const newPD:ICart = {...action.payload, quantity: 1}
+          state.cart.push(newPD)
+        }else{
+          alert('This product already in your cart')
+        }
     }
   },
   // The `extraReducers` field lets the slice handle actions defined elsewhere,
@@ -55,6 +63,6 @@ export const storeSlice = createSlice({
   },
 });
 
-export const { setWomenProduct, setWomenSelectedCategory } = storeSlice.actions;
+export const { setWomenProduct, setWomenSelectedCategory, setCartProduct } = storeSlice.actions;
 
 export default storeSlice.reducer;

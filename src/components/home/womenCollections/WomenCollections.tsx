@@ -18,7 +18,7 @@ const WomenCollections = () => {
     useEffect( ()=>{
         dispatch(setWomenProduct());
     },[products])
-    const handleCategorySelector = (selected:string) =>{
+    const handleCategorySelector = (selected:TWomenSelectedCategory) =>{
         dispatch(setWomenSelectedCategory(selected))
         dispatch(setWomenProduct());
     }
@@ -30,9 +30,9 @@ const WomenCollections = () => {
                 <p className={`${curProduct === 'tanks' && 'c-w-category'}`} onClick={ ()=> handleCategorySelector("tanks")}>Tanks</p>
                 <p className={`${curProduct === 'skirt' && 'c-w-category'}`} onClick={ ()=> handleCategorySelector("skirt")}>Skirts</p>
             </div>
-            <Row>
+            <Row className="g-4">
                 {
-                    selectedProduct.slice(0,4).map( (p) => <ProductCard key={`${p.id+p.title}`} data={p}/>)
+                  selectedProduct.slice(0,4).map( (p) => <ProductCard key={p.id} data={p}/>)
                 }
             </Row>
         </Container>
