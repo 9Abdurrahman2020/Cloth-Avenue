@@ -1,4 +1,5 @@
 export interface IProduct {
+    _id: string,
     id: string,
     title: string,
     price: number,
@@ -11,6 +12,7 @@ export interface IProduct {
     img: string
 }
 export interface ICart {
+    _id: string,
     id: string,
     title: string,
     price: number,
@@ -21,7 +23,8 @@ export interface ICart {
     category: string,
     for: string,
     img: string,
-    quantity: number
+    quantity: number,
+    size: string
 }
 export interface InitialState {
     products: IProduct[],

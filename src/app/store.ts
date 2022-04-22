@@ -3,7 +3,7 @@ import storeReducer from '../features/counter/storeSlice';
 
 export const store = configureStore({
   reducer: {
-    store: storeReducer,
+    clothStore: storeReducer,
   },
 });
 

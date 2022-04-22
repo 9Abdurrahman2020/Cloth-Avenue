@@ -1,0 +1,53 @@
+.loading-image-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.single-page-price{
+    color: #e32e00;
+    margin: 5px auto;
+}
+.original-price{
+    opacity: .6;
+}
+.empty-star-icon{
+    color: rgb(230, 230, 230);
+}
+.saved-price{
+    font-size: medium;
+}
+.available-size-container{
+    display: flex;
+}
+.available-size-container div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border: 1px solid rgb(189, 189, 189);
+    margin-right: 5px;
+}
+.available-size-container .active{
+    border: 1px solid black;
+}
+.available-size-container div:hover{
+    border: 1px solid black;
+}
+.quantity-input-box button{
+    color: white;
+    border: none;
+    background-color: #e32e00;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+.quantity-input-box input{
+    width: 40px;
+    margin: auto 10px;
+    text-align: center;
+}
+.review-button-container{
+    display: flex;
+    justify-content: space-between;
+}

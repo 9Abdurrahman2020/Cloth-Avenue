@@ -8,9 +8,9 @@ import ProductCard from '../productCard/ProductCard';
 const MenCollections = () => {
     
     const dispatch = useAppDispatch();
-    const products:IProduct[] = useAppSelector( state => state.store.products);
-    const selectedProduct:IProduct[] = useAppSelector( state => state.store.men);
-    const curProduct:TMenSelectedCategory = useAppSelector( state => state.store.menSelectedCategory);
+    const products:IProduct[] = useAppSelector( state => state.clothStore.products);
+    const selectedProduct:IProduct[] = useAppSelector( state => state.clothStore.men);
+    const curProduct:TMenSelectedCategory = useAppSelector( state => state.clothStore.menSelectedCategory);
 
     useEffect( ()=>{
         dispatch(fetchProduct());

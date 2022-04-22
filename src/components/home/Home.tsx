@@ -25,8 +25,8 @@ const Home = () => {
             <WomenCollections/>
             <ManDiscount/>
             <MenCollections/>
-            <OurBrand/>
             <ServiceDemo/>
+            <OurBrand/>
         </div>
     );
 };

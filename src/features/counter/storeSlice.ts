@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { toast } from 'react-toastify';
 import { ICart, InitialState, IProduct, TMenSelectedCategory, TWomenSelectedCategory } from '../Types';
 
 const initialState: InitialState = {
@@ -20,7 +19,7 @@ const initialState: InitialState = {
 export const fetchProduct = createAsyncThunk(
   'product/fetchProduct',
   async () => {
-    const data: IProduct[] = await fetch('./data/product.json')
+    const data: IProduct[] = await fetch('http://localhost:5000/products')
     .then(res=>res.json())
     return data;
   }
@@ -55,12 +54,13 @@ export const storeSlice = createSlice({
         state.men = state.products.filter( pd=> pd.for === "male" && pd.category === state.menSelectedCategory)
       }
     },
-    setCartProduct: (state,action:{type:string, payload: IProduct})=>{
-        if(!state.cart.find( p=> p.id === action.payload.id)){
-          const newPD:ICart = {...action.payload, quantity: 1}
+    setCartProduct: (state,action:{type:string, payload: ICart})=>{
+        if(!state.cart.find( p=> p._id === action.payload._id)){
+          const newPD:ICart = {...action.payload}
           state.cart.push(newPD)
         }else{
-          toast("This item already in your cart !")
+          const newCart = state.cart.filter( pd=> pd._id !== action.payload._id)
+          state.cart = [...newCart, action.payload]
         }
     }
   },

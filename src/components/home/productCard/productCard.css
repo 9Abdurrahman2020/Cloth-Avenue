@@ -43,8 +43,10 @@
   background-color: #fff;
 }
 .cart-button:hover{
-  color: #eeeeee;
   text-decoration: underline;
+}
+.box-up:hover{
+  cursor: pointer;
 }
 
 @media (max-width: 991px) {
@@ -271,4 +273,5 @@
   letter-spacing: 0.045em;
   text-transform: uppercase;
   white-space: nowrap;
+  font-size: 14px ;
 }

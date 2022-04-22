@@ -3,9 +3,11 @@ import React, { useEffect, useRef, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Footer from './components/common/footer/Footer';
 import Navigation from './components/common/navigation/Navigation';
 import TopNavbar from './components/common/topNavbar/TopNavbar';
 import Home from './components/home/Home';
+import SingleProduct from './components/singleProduct/SingleProduct';
 
 function App() {
   const [height, setHeight] = useState(0)
@@ -23,12 +25,14 @@ function App() {
     <div style={{marginTop:`${height}px`}} className='main-body'>
       <Routes>
         <Route path="/" element={<Home/>}/>
+        <Route path="/product/:id" element={<SingleProduct/>}/>
       </Routes>
     </div>
     <ToastContainer
-    position="top-center"
-    autoClose={2000}
+      position="top-center"
+      autoClose={2000}
     />
+    <Footer/>
     </BrowserRouter>
   );
 }

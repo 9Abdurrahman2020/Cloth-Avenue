@@ -8,9 +8,9 @@ import './womenCollections.css';
 const WomenCollections = () => {
     
     const dispatch = useAppDispatch();
-    const products:IProduct[] = useAppSelector( state => state.store.products);
-    const selectedProduct:IProduct[] = useAppSelector( state => state.store.women);
-    const curProduct:TWomenSelectedCategory = useAppSelector( state => state.store.womenSelectedCategory);
+    const products:IProduct[] = useAppSelector( state => state.clothStore.products);
+    const selectedProduct:IProduct[] = useAppSelector( state => state.clothStore.women);
+    const curProduct:TWomenSelectedCategory = useAppSelector( state => state.clothStore.womenSelectedCategory);
 
     useEffect( ()=>{
         dispatch(fetchProduct());
