@@ -30,7 +30,7 @@ const Review = ({setReviewBtn}:{setReviewBtn:any}) => {
     }
     
     return (
-        <div className='my-4'>
+        <div className='my-5'>
             <form onSubmit={handleOnSubmit}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Name</Form.Label>

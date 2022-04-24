@@ -1,0 +1,22 @@
+.category-banner{
+    text-align: center;
+    padding: 100px;
+    background: url('https://i.ibb.co/7VmZ85t/minimal-shopping-bag-package-banner-sign-symbol-shopping-concept-orange-background-3d-rendering-1.jpg');
+    background-position: center;
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.18);
+    background-blend-mode: multiply;
+    text-transform: capitalize;
+}
+.category-based-product-container{
+    background-color: #ffffff;
+    margin-top: -50px;
+    padding: 30px;
+}
+.category-discount-banner{
+    color: #ffffff;
+    background-image: url('https://cdn.shopify.com/s/files/1/2617/9878/files/avenue-clothing-collections-right_1600x.jpg?v=1639058789');
+    background-color: rgba(0, 0, 0, 0.18);
+    background-blend-mode: multiply;
+    padding: 20px;
+}

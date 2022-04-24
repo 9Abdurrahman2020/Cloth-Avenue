@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import CategoryBasedProduct from './components/categoryBasedProduct/CategoryBasedProduct';
 import Footer from './components/common/footer/Footer';
 import Navigation from './components/common/navigation/Navigation';
 import TopNavbar from './components/common/topNavbar/TopNavbar';
@@ -26,6 +27,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/product/:id" element={<SingleProduct/>}/>
+        <Route path="/products/:category" element={<CategoryBasedProduct/>}/>
       </Routes>
     </div>
     <ToastContainer

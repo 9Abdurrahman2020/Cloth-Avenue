@@ -9,24 +9,28 @@ import Rating from 'react-rating';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { setCartProduct } from '../../features/counter/storeSlice';
-import { IProduct } from '../../features/Types';
+import { setCartProduct, setSingleProduct } from '../../features/counter/storeSlice';
+import { initialProduct } from '../../features/Types';
 import Review from '../common/review/Review';
 import './singleProduct.css';
 
 const SingleProduct = () => {
     const { id } = useParams<string>();
-    const [ product, setProduct ] = useState<IProduct>();
     const [ size, setSize ] = useState<string>('s');
     const [ quantity, setQuantity ] = useState<number>(1);  
     const dispatch = useAppDispatch() ;
-    const cartProduct = useAppSelector( (state)=>state.clothStore.cart );
+    const cartProduct = useAppSelector( (state)=>state.cart );
+    const product = useAppSelector( (state)=>state.singleProduct );
     const [ currentProduct, setCurrentProduct ] = useState<Boolean>(false)
     const [ reviewBtn, setReviewBtn ] = useState<Boolean>(false)
+    
     useEffect( ()=>{
+        dispatch(setSingleProduct((initialProduct)));
         fetch(`http://localhost:5000/product/${id}`)
         .then(res=>res.json())
-        .then( (data:IProduct) => setProduct(data))
+        .then( (data) => {
+            dispatch(setSingleProduct((data)))
+        })
     },[])
     useEffect( ()=>{
         const thisProduct = cartProduct.find( pd=> pd._id === id)
@@ -36,7 +40,7 @@ const SingleProduct = () => {
             setSize(thisProduct.size)
         }
     },[])
-    if(!product){
+    if(!product.price){
         return (
             <div className="loading-image-container">
                 <img width="200px" src="https://cdn.dribbble.com/users/408943/screenshots/2887008/media/5292aff30094d74fffd87a0dba58fa4e.gif"></img>
@@ -130,7 +134,7 @@ const SingleProduct = () => {
                     reviewBtn && <Review setReviewBtn={setReviewBtn}/>
                 }
                 <div className="mt-3">
-                    This is an awesome product !
+                    
                 </div>
             </div>
         </Container>

@@ -3,7 +3,7 @@ import { useAppDispatch } from '../../../app/hooks';
 import { IProduct } from '../../../features/Types';
 import './productCard.css';
 
-const  ProductCard = ({data}:{data:IProduct}) => {
+const  ProductCard = ({data, category}:{data:IProduct, category?:string}) => {
   const dispatch = useAppDispatch();
   let navigate = useNavigate();
   const discountPrice:number = (data.price * .85);
@@ -12,7 +12,7 @@ const  ProductCard = ({data}:{data:IProduct}) => {
     navigate(`/product/${data._id}`)
   }
     return (
-        <div className="col-12 col-sm-6 col-md-4 col-lg-3 page-wrapper">
+        <div className={`${category ? 'col-12 col-md-6 col-lg-4 page-wrapper' : 'col-12 col-sm-6 col-md-4 col-lg-3 page-wrapper'}`}>
   <div className="page-inner">
     <div className="row">
       <div className="el-wrapper">

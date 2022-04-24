@@ -33,8 +33,24 @@ export interface InitialState {
     women: IProduct[],
     cart: ICart[],
     menSelectedCategory: TMenSelectedCategory,
-    men: IProduct[]
+    men: IProduct[],
+    singleProduct: IProduct,
+    categoryBasedProducts: IProduct[]
   }
+
+export const initialProduct:IProduct = {
+    _id:'',
+    brand: '',
+    category: '',
+    details: '',
+    for: '',
+    id: '',
+    img: '',
+    price: 0,
+    rating: 0,
+    stock: 0,
+    title: ''
+}
 
 export type TWomenSelectedCategory = "tanks" | "dress" | "skirt";
 export type TMenSelectedCategory = "t-shirt" | "hoodie" | "jeans";

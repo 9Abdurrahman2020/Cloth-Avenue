@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useAppDispatch } from '../../app/hooks';
+import { setAllProducts, setStatus } from '../../features/counter/storeSlice';
 import Banner from './banner/Banner';
 import Collections from './collections/Collections';
 import DiscountBanner1 from './discountBanner1/DiscountBanner1';
@@ -13,6 +15,16 @@ import WomenCollections from './womenCollections/WomenCollections';
 import WomenDiscount from './womenDiscount/WomenDiscount';
 
 const Home = () => {
+    const dispatch = useAppDispatch()
+    useEffect( ()=>{
+        dispatch(setStatus("loading"))
+        fetch('http://localhost:5000/products')
+        .then( res=> res.json())
+        .then( data => {
+            dispatch(setAllProducts(data))
+            dispatch(setStatus("successful"))
+        })
+    },[])
     return (
         <div>
             <Offer/>

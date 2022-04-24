@@ -9,7 +9,7 @@ import './topNavbar.css';
 
 
 const TopNavbar = () => {
-    const cart:IProduct[] = useAppSelector( state=> state.clothStore.cart)
+    const cart:IProduct[] = useAppSelector( state=> state.cart)
     
     return (
         <div>

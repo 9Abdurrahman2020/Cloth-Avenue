@@ -1,20 +1,17 @@
 import React, { useEffect } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { fetchProduct, setMenProduct, setMenSelectedCategory } from '../../../features/counter/storeSlice';
+import { setMenProduct, setMenSelectedCategory } from '../../../features/counter/storeSlice';
 import { IProduct, TMenSelectedCategory } from '../../../features/Types';
 import ProductCard from '../productCard/ProductCard';
 
 const MenCollections = () => {
     
     const dispatch = useAppDispatch();
-    const products:IProduct[] = useAppSelector( state => state.clothStore.products);
-    const selectedProduct:IProduct[] = useAppSelector( state => state.clothStore.men);
-    const curProduct:TMenSelectedCategory = useAppSelector( state => state.clothStore.menSelectedCategory);
+    const products:IProduct[] = useAppSelector( state => state.products);
+    const selectedProduct:IProduct[] = useAppSelector( state => state.men);
+    const curProduct:TMenSelectedCategory = useAppSelector( state => state.menSelectedCategory);
 
-    useEffect( ()=>{
-        dispatch(fetchProduct());
-    },[])
     useEffect( ()=>{
         dispatch(setMenProduct());
     },[products])

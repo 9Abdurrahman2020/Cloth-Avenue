@@ -1,0 +1,6 @@
+.collection-box{
+    cursor: pointer;
+}
+.collection-box p:hover{
+    text-decoration: underline;
+}
