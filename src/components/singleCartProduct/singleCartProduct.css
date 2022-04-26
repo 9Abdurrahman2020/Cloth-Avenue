@@ -1,0 +1,8 @@
+.cart-product-title{
+    color: #000;
+    text-decoration: none;
+}
+.cart-product-title:hover{
+    text-decoration: underline;
+    color: #000;
+}

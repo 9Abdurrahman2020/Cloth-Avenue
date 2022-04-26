@@ -57,6 +57,41 @@
     padding: 0 5px;
     border-right: 1px solid #ffffff;
 }
+.modal-dialog {
+    position: fixed;
+    top: 12px;
+    right: 15px;
+    width: 350px;
+    max-height: 350px;
+    z-index: 10040;
+    overflow-y: hidden;
+    border: 1px solid rgb(155, 154, 154);
+  }
+.modal-body{
+    max-height: 300px;
+    overflow-y: scroll;
+}
+.modal-footer{
+    display: flex;
+    justify-content: center;
+    height: 50px;
+    padding: 0;
+}
+.cart-button-1{
+    width: 40%;
+    border: 1px solid #e32e00;
+    background-color: #ffffff;
+    color: #e32e00;
+    padding: 5px 0;
+}
+.cart-button-1:hover{
+    background-color: #e32e00;
+    color: #ffffff;
+}
+  .modal-backdrop.show {
+    opacity: 0;
+}
+
 
 @media  screen and (max-width: 768px) {
     .top-nav-container{

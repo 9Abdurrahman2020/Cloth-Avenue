@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Row } from 'react-bootstrap';
+import { Button, Container, Row } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { setCategoryBasedProduct } from '../../features/counter/storeSlice';
@@ -12,6 +12,7 @@ const CategoryBasedProduct = () => {
     const {category} = useParams();
     const products = useAppSelector( state => state.categoryBasedProducts)
     const [ allProduct, setAllProduct ] = useState<IProduct[]>([])
+    const [ filterBtn, setFilterBtn ] = useState<Boolean>(false)
     const [ price, setPrice ] = useState('50');
     const dispatch = useAppDispatch()
     
@@ -23,12 +24,12 @@ const CategoryBasedProduct = () => {
             setAllProduct(data)
             dispatch(setCategoryBasedProduct(data))
         })
-    },[])
+    },[category])
 
     const onChangeHandler = (e:React.ChangeEvent<HTMLInputElement>):void =>{
         setPrice(e.target.value)
         if(allProduct){
-            let newP = allProduct.filter(pd=> (pd.price * 0.85).toString() <= (e.target.value))
+            let newP = [...allProduct].filter(pd=> (pd.price * 0.85) <= parseInt(e.target.value))
             dispatch(setCategoryBasedProduct(newP))
         }
     }
@@ -54,25 +55,26 @@ const CategoryBasedProduct = () => {
             </div>
             <Container className="category-based-product-container">
                 <Row className="g-4">
-                    <div className="col-md-3">
-                    <div className="App">
-                    </div>
-                        <h4>Price($1 -${price})</h4>
-                        <input onChange={ onChangeHandler } type="range" min="2" max="50" className="form-range" id="customRange1"/>
-                        <div className="my-4">
-                            <h4>Brand</h4>
-                            <div onClick={ ()=>onClickHandler('KD')}>
-                                <input className='me-2' type="radio" id="kd" name="fav_language" value="KD"/>
-                                <label htmlFor="kd">KD</label>
-                             </div>
-                             <div onClick={ ()=>onClickHandler('Keystone')}>
-                                <input className='me-2' type="radio" id="Keystone" name="fav_language" value="Keystone"/>
-                                <label htmlFor="Keystone">Keystone</label>
-                             </div>
-                             <div onClick={ ()=>onClickHandler('Copper Thompson')}>
-                                <input className='me-2' type="radio" id="Copper Thompson" name="fav_language" value="Copper Thompson"/>
-                                <label htmlFor="Copper Thompson">Copper Thompson</label>
-                             </div>
+                    <div className="col-md-3 ">
+                        <Button onClick={ ()=> setFilterBtn(!filterBtn)} className="category-page-filter-button mx-auto" variant="danger">Filter</Button>
+                        <div className={`${ !filterBtn && 'mobile-filter-box'}`}>
+                            <h4>Price($1 -${price})</h4>
+                            <input onChange={ onChangeHandler } type="range" min="2" max="50" className="form-range" id="customRange1"/>
+                            <div className="my-4">
+                                <h4>Brand</h4>
+                                <div onClick={ ()=>onClickHandler('KD')}>
+                                    <input className='me-2' type="radio" id="kd" name="fav_language" value="KD"/>
+                                    <label htmlFor="kd">KD</label>
+                                </div>
+                                <div onClick={ ()=>onClickHandler('Keystone')}>
+                                    <input className='me-2' type="radio" id="Keystone" name="fav_language" value="Keystone"/>
+                                    <label htmlFor="Keystone">Keystone</label>
+                                </div>
+                                <div onClick={ ()=>onClickHandler('Copper Thompson')}>
+                                    <input className='me-2' type="radio" id="Copper Thompson" name="fav_language" value="Copper Thompson"/>
+                                    <label htmlFor="Copper Thompson">Copper Thompson</label>
+                                </div>
+                        </div>
                         </div>
                     </div>
                     <div className="col-md-9">

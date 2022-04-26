@@ -35,7 +35,8 @@ export interface InitialState {
     menSelectedCategory: TMenSelectedCategory,
     men: IProduct[],
     singleProduct: IProduct,
-    categoryBasedProducts: IProduct[]
+    categoryBasedProducts: IProduct[],
+    cartPrice: number
   }
 
 export const initialProduct:IProduct = {

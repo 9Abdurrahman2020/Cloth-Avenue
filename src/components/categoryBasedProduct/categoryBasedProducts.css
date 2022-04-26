@@ -20,3 +20,16 @@
     background-blend-mode: multiply;
     padding: 20px;
 }
+.category-page-filter-button{
+    display: none;
+}
+
+@media only screen  and (max-width: 768px) {
+    .mobile-filter-box{
+        display: none;
+    }
+    .category-page-filter-button{
+        display: block;
+    }
+    
+}

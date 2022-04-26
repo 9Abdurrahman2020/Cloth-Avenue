@@ -9,7 +9,7 @@ import Rating from 'react-rating';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { setCartProduct, setSingleProduct } from '../../features/counter/storeSlice';
+import { setCartPrice, setCartProduct, setSingleProduct } from '../../features/counter/storeSlice';
 import { initialProduct } from '../../features/Types';
 import Review from '../common/review/Review';
 import './singleProduct.css';
@@ -31,7 +31,7 @@ const SingleProduct = () => {
         .then( (data) => {
             dispatch(setSingleProduct((data)))
         })
-    },[])
+    },[id])
     useEffect( ()=>{
         const thisProduct = cartProduct.find( pd=> pd._id === id)
         if(thisProduct){
@@ -39,7 +39,7 @@ const SingleProduct = () => {
             setQuantity(thisProduct.quantity)
             setSize(thisProduct.size)
         }
-    },[])
+    },[id])
     if(!product.price){
         return (
             <div className="loading-image-container">
@@ -55,14 +55,27 @@ const SingleProduct = () => {
         if(operator === 'minus'){
             if(quantity>1){
                 setQuantity(quantity-1)
+                dispatch(setCartProduct({...product,price:parseFloat(price.toFixed(2)),quantity,size}))
+                dispatch( setCartPrice())
             }
         }else if(operator === 'plus'){
             if(quantity< product.stock){
                 setQuantity(quantity+1)
+                dispatch(setCartProduct({...product,price:parseFloat(price.toFixed(2)),quantity,size}))
+                dispatch( setCartPrice())
             }else{
                 toast(`Sorry only ${product.stock} items in our stock !`)
             }
         }
+    }
+
+    const cartProductHandler = () =>{
+        dispatch(setCartProduct({...product,price:parseFloat(price.toFixed(2)),quantity,size}))
+        dispatch( setCartPrice())
+    }
+    const setSizeHandler = (size:string) =>{
+        setSize(size)
+        dispatch(setCartProduct({...product,price:parseFloat(price.toFixed(2)),quantity,size}))
     }
     
     return (
@@ -94,10 +107,10 @@ const SingleProduct = () => {
                     <div>
                         Available size
                         <div className='available-size-container'>
-                            <div className={`${size === "s" && 'active'}`} onClick={ ()=> setSize('s')}>S</div>
-                            <div className={`${size === "m" && 'active'}`} onClick={ ()=> setSize('m')}>M</div>
-                            <div className={`${size === "l" && 'active'}`} onClick={ ()=> setSize('l')}>L</div>
-                            <div className={`${size === "xl" && 'active'}`} onClick={ ()=> setSize('xl')}>XL</div>
+                            <div className={`${size === "s" && 'active'}`} onClick={ ()=> setSizeHandler('s')}>S</div>
+                            <div className={`${size === "m" && 'active'}`} onClick={ ()=> setSizeHandler('m')}>M</div>
+                            <div className={`${size === "l" && 'active'}`} onClick={ ()=> setSizeHandler('l')}>L</div>
+                            <div className={`${size === "xl" && 'active'}`} onClick={ ()=> setSizeHandler('xl')}>XL</div>
                         </div>
                     </div>
                     <div className="quantity-input-box my-3">
@@ -108,7 +121,7 @@ const SingleProduct = () => {
                     { currentProduct && <p className='text-success mb-0'><FontAwesomeIcon icon={faCheckCircle}/> This item already in your cart</p>}
                     <Row>
                         <div className="col-12 col-md-6">
-                            <button onClick={ ()=> dispatch(setCartProduct({...product,quantity,size}))} className='btn btn-outline-danger w-100 my-2'><FontAwesomeIcon icon={faCartPlus}/> Add to Cart</button>
+                            <button onClick={ cartProductHandler } className='btn btn-outline-danger w-100 my-2'><FontAwesomeIcon icon={faCartPlus}/> Add to Cart</button>
                         </div>
                         <div className="col-12 col-md-6">
                             <button className='btn btn-danger w-100 my-2'>Buy it now</button>

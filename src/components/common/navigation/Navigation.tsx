@@ -3,23 +3,41 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import { FormControl, InputGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { useAppSelector } from '../../../app/hooks';
 import logo from '../../../images/logo/logo.png';
 import './navigation.css';
 const Navigation = () => {
     const [activeNav, setActiveNav ] = useState<Boolean>(false);
+    const cartLength = useAppSelector(state=> state.cart.length)
     return (
            <div>
                 <div className='navigation-container'>
-                    <div className="logo"><img src={logo} alt="" /></div>
+                    <Link to="/"><div className="logo"><img src={logo} alt="" /></div></Link>
                     <ul className='nav-links'>
-                        <li>
-                            <Link to="/">Men's</Link>
+                        <li className="list-1">
+                            <h5>Men's</h5>
+                            <ul className="nab-dropdown">
+                                <li><Link to="/products/t-shirt">T-Shirt</Link></li>
+                                <li><Link to="/products/jeans">Jeans</Link></li>
+                                <li><Link to="/products/shirts">Shirt</Link></li>
+                                <li><Link to="/products/shorts">Shorts</Link></li>
+                            </ul>
                         </li>
                         <li>
-                            <Link to="/">Women's</Link>
+                            <h5>Women's</h5>
+                            <ul className="nab-dropdown">
+                                <li><Link to="/products/dress">Dresses</Link></li>
+                                <li><Link to="/products/tanks">Tanks</Link></li>
+                                <li><Link to="/products/skirt">Skirts</Link></li>
+                                <li><Link to="/products/blouse">Blouses</Link></li>
+                            </ul>
                         </li>
                         <li>
-                            <Link to="/">Kid's</Link>
+                            <h5>Kid's</h5>
+                            <ul className="nab-dropdown">
+                                <li><Link to="/products/pants">Pants</Link></li>
+                                <li><Link to="/products/shirts">shirts</Link></li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -36,7 +54,8 @@ const Navigation = () => {
                         <InputGroup.Text className="topNab-search-icon2" id="basic-addon2"><FontAwesomeIcon icon={faSearch}/></InputGroup.Text>
                     </InputGroup>
                </div>
-               <span className='mobile ms-3' title="cart"><FontAwesomeIcon className='me-1' style={{fontSize:"20px"}} icon={faBagShopping}/><sup>0</sup></span>
+               <pre className='mobile ms-3' title="cart"><FontAwesomeIcon className='me-1' style={{fontSize:"20px"}} icon={faBagShopping}/><sup>{cartLength}</sup></pre>
+               
                     <span className='mobile' title="Login in" style={{fontSize:"20px"}}><FontAwesomeIcon icon={faUserCircle}/></span>
                     <div onClick={ ()=> setActiveNav(!activeNav) } className={`burger ${activeNav && 'toggle'}`}>
                         <div className='line1'></div>
