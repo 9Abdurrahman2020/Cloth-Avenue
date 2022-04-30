@@ -36,8 +36,12 @@ export interface InitialState {
     men: IProduct[],
     singleProduct: IProduct,
     categoryBasedProducts: IProduct[],
-    cartPrice: number
+    cartPrice: number,
+    filter: ISearch
   }
+export interface ISearch{
+    [key: string ]: string
+}
 
 export const initialProduct:IProduct = {
     _id:'',

@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import { FormControl, InputGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { useAppSelector } from '../../../app/hooks';
+import { useAppSelector } from '../../../app/store';
 import logo from '../../../images/logo/logo.png';
 import './navigation.css';
 const Navigation = () => {

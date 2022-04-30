@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useAppDispatch } from '../../app/hooks';
+import { useAppDispatch } from '../../app/store';
 import { setAllProducts, setStatus } from '../../features/counter/storeSlice';
 import Banner from './banner/Banner';
 import Collections from './collections/Collections';

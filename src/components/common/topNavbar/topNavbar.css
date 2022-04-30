@@ -91,7 +91,16 @@
   .modal-backdrop.show {
     opacity: 0;
 }
+.search-result-box{
+    background: #000;
+    color: #ffffff;
+    height: 70vh;
+    position: relative;
 
+}
+.top-nav-bar-container{
+    position: absolute;
+}
 
 @media  screen and (max-width: 768px) {
     .top-nav-container{

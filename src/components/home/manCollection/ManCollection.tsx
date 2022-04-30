@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Container, Row } from 'react-bootstrap';
-import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../../app/store';
 import { setMenProduct, setMenSelectedCategory } from '../../../features/counter/storeSlice';
 import { IProduct, TMenSelectedCategory } from '../../../features/Types';
 import ProductCard from '../productCard/ProductCard';

@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import { Container, Form } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '../../../app/store';
+import { setFilter } from '../../../features/counter/storeSlice';
+import { ISearch } from '../../../features/Types';
 import './filterProduct.css';
 
 const FilterProduct = () => {
-    interface ISearch{
-        [key: string ]: string
-    }
+    
+    const dispatch = useAppDispatch();
+    const navigate = useNavigate()
     const [ department, setDepartment ] = useState<string>();
     const [ searchData, setSearchData ] = useState<ISearch>({});
     const handleSetDepartment  = (e:React.ChangeEvent<HTMLSelectElement>):void =>{
@@ -16,12 +20,13 @@ const FilterProduct = () => {
         const name:string = e.target.name;
         const value:string = e.target.value;
         const newData:{ [key: string]: string } = {...searchData};
-        newData[name] = value;
+        newData[name] = value.toLocaleLowerCase();
         setSearchData(newData)
     }
     const onSubmitHandler = (e:React.FormEvent<HTMLFormElement>):void =>{
         e.preventDefault()
-        console.log(searchData);
+        dispatch(setFilter(searchData))
+        navigate('/filtered-products')
     }
     return (
         <div className='filter-product-container p-5 my-5'>
@@ -33,29 +38,30 @@ const FilterProduct = () => {
                     <Form.Group className="mb-3">
                         <Form.Select onChange={handleSetDepartment} defaultValue="" required name="department">
                             <option value="" disabled style={{display:"none"}}>Department...</option>
-                            <option value="Man's">Man's</option>
-                            <option value="Women's">Women's</option>
-                            <option value="Kid's">Kid's</option>
+                            <option value="male">Man's</option>
+                            <option value="female">Women's</option>
+                            <option value="kids">Kid's</option>
                         </Form.Select>
                     </Form.Group>
                     </div>
                     <div className="col-12 col-md-4">
                     <Form.Group className="mb-3">
-                        <Form.Select onChange={onChangeHandler} defaultValue="1" name="type" disabled={ !department && true}>
+                        <Form.Select onChange={onChangeHandler} defaultValue="1" name="type" disabled={ !department && true} required>
                             <option value="1" disabled style={{display:"none"}}>Product Type...</option>
-                            { department === "Man's" && <>
+                            { department === "male" && <>
                             <option>T-Shirt</option> 
                             <option>Shorts</option>
                             <option>Jeans</option> 
                             <option>Shirt</option> 
+                            <option>Hoodie</option> 
                             </> }
-                            { department === "Women's" && <>
+                            { department === "female" && <>
                             <option>Dress</option> 
                             <option>Tanks</option>
                             <option>Blouse</option> 
                             <option>Skirt</option> 
                             </> }
-                            { department === "Kid's" && <>
+                            { department === "kids" && <>
                             <option>Pants</option> 
                             <option>Shirts</option>
                             </> }
@@ -64,7 +70,7 @@ const FilterProduct = () => {
                     </div>
                     <div className="col-12 col-md-4">
                     <Form.Group className="mb-3">
-                        <Form.Select onChange={onChangeHandler} defaultValue="1" name="brand" disabled={ !department && true}>
+                        <Form.Select onChange={onChangeHandler} defaultValue="1" name="brand" disabled={ !department && true} required>
                             <option value="1" disabled style={{display:"none"}}>Brand...</option>
                             <option>Copper Thompson</option>
                             <option>Keystone</option>

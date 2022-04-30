@@ -1,0 +1,9 @@
+.checkout-page-container{
+    background: rgb(226, 226, 226);
+    padding: 20px 0 70px;
+}
+.checkout-product-section{
+    margin-top: -50px;
+    background-color: #fff;
+    padding: 20px;
+}

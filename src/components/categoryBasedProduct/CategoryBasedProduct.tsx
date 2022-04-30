@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Container, Row } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../app/store';
 import { setCategoryBasedProduct } from '../../features/counter/storeSlice';
 import { IProduct } from '../../features/Types';
 import ProductCard from '../home/productCard/ProductCard';
@@ -10,11 +10,11 @@ import './categoryBasedProducts.css';
 
 const CategoryBasedProduct = () => {
     const {category} = useParams();
-    const products = useAppSelector( state => state.categoryBasedProducts)
-    const [ allProduct, setAllProduct ] = useState<IProduct[]>([])
-    const [ filterBtn, setFilterBtn ] = useState<Boolean>(false)
+    const products = useAppSelector( state => state.categoryBasedProducts);
+    const [ allProduct, setAllProduct ] = useState<IProduct[]>([]);
+    const [ filterBtn, setFilterBtn ] = useState<Boolean>(false);
     const [ price, setPrice ] = useState('50');
-    const dispatch = useAppDispatch()
+    const dispatch = useAppDispatch();
     
     useEffect( ()=>{
         dispatch(setCategoryBasedProduct([]))
@@ -47,7 +47,6 @@ const CategoryBasedProduct = () => {
         )
     }
     
-    
     return (
         <div>
             <div>
@@ -61,6 +60,7 @@ const CategoryBasedProduct = () => {
                             <h4>Price($1 -${price})</h4>
                             <input onChange={ onChangeHandler } type="range" min="2" max="50" className="form-range" id="customRange1"/>
                             <div className="my-4">
+                                
                                 <h4>Brand</h4>
                                 <div onClick={ ()=>onClickHandler('KD')}>
                                     <input className='me-2' type="radio" id="kd" name="fav_language" value="KD"/>
@@ -74,7 +74,8 @@ const CategoryBasedProduct = () => {
                                     <input className='me-2' type="radio" id="Copper Thompson" name="fav_language" value="Copper Thompson"/>
                                     <label htmlFor="Copper Thompson">Copper Thompson</label>
                                 </div>
-                        </div>
+                                
+                            </div>
                         </div>
                     </div>
                     <div className="col-md-9">

@@ -8,7 +8,7 @@ import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css';
 import Rating from 'react-rating';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../app/store';
 import { setCartPrice, setCartProduct, setSingleProduct } from '../../features/counter/storeSlice';
 import { initialProduct } from '../../features/Types';
 import Review from '../common/review/Review';
@@ -16,7 +16,7 @@ import './singleProduct.css';
 
 const SingleProduct = () => {
     const { id } = useParams<string>();
-    const [ size, setSize ] = useState<string>('s');
+    const [ size, setSize ] = useState<string>('S');
     const [ quantity, setQuantity ] = useState<number>(1);  
     const dispatch = useAppDispatch() ;
     const cartProduct = useAppSelector( (state)=>state.cart );
@@ -55,14 +55,22 @@ const SingleProduct = () => {
         if(operator === 'minus'){
             if(quantity>1){
                 setQuantity(quantity-1)
-                dispatch(setCartProduct({...product,price:parseFloat(price.toFixed(2)),quantity,size}))
-                dispatch( setCartPrice())
+                console.log('set quantity', quantity-1);
+                if(currentProduct){
+                    dispatch(setCartProduct({...product,price:parseFloat(price.toFixed(2)),quantity: quantity-1,size}))
+                    console.log('minus clicked', quantity);
+                    dispatch( setCartPrice())
+                }
             }
         }else if(operator === 'plus'){
             if(quantity< product.stock){
                 setQuantity(quantity+1)
-                dispatch(setCartProduct({...product,price:parseFloat(price.toFixed(2)),quantity,size}))
-                dispatch( setCartPrice())
+                console.log('set quantity', quantity+1);
+                if(currentProduct){
+                    dispatch(setCartProduct({...product,price:parseFloat(price.toFixed(2)),quantity: quantity+1,size}))
+                    console.log('plus clicked', operator, quantity);
+                    dispatch( setCartPrice())
+                }
             }else{
                 toast(`Sorry only ${product.stock} items in our stock !`)
             }
@@ -72,10 +80,13 @@ const SingleProduct = () => {
     const cartProductHandler = () =>{
         dispatch(setCartProduct({...product,price:parseFloat(price.toFixed(2)),quantity,size}))
         dispatch( setCartPrice())
+        setCurrentProduct(true)
     }
     const setSizeHandler = (size:string) =>{
         setSize(size)
-        dispatch(setCartProduct({...product,price:parseFloat(price.toFixed(2)),quantity,size}))
+        if(currentProduct){
+            dispatch(setCartProduct({...product,price:parseFloat(price.toFixed(2)),quantity,size}))
+        }
     }
     
     return (
@@ -107,10 +118,10 @@ const SingleProduct = () => {
                     <div>
                         Available size
                         <div className='available-size-container'>
-                            <div className={`${size === "s" && 'active'}`} onClick={ ()=> setSizeHandler('s')}>S</div>
-                            <div className={`${size === "m" && 'active'}`} onClick={ ()=> setSizeHandler('m')}>M</div>
-                            <div className={`${size === "l" && 'active'}`} onClick={ ()=> setSizeHandler('l')}>L</div>
-                            <div className={`${size === "xl" && 'active'}`} onClick={ ()=> setSizeHandler('xl')}>XL</div>
+                            <div className={`${size === "S" && 'active'}`} onClick={ ()=> setSizeHandler('S')}>S</div>
+                            <div className={`${size === "M" && 'active'}`} onClick={ ()=> setSizeHandler('M')}>M</div>
+                            <div className={`${size === "L" && 'active'}`} onClick={ ()=> setSizeHandler('L')}>L</div>
+                            <div className={`${size === "XL" && 'active'}`} onClick={ ()=> setSizeHandler('XL')}>XL</div>
                         </div>
                     </div>
                     <div className="quantity-input-box my-3">

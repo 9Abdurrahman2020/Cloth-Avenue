@@ -4,15 +4,19 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import CategoryBasedProduct from './components/categoryBasedProduct/CategoryBasedProduct';
+import CheckOut from './components/checkOut/CheckOut';
 import Footer from './components/common/footer/Footer';
 import Navigation from './components/common/navigation/Navigation';
 import TopNavbar from './components/common/topNavbar/TopNavbar';
+import FilteredProducts from './components/filteredProducts/FilteredProducts';
+import GanderBasedProduct from './components/ganderBasedProduct/GanderBasedProduct';
 import Home from './components/home/Home';
+import Shop from './components/shop/Shop';
 import SingleProduct from './components/singleProduct/SingleProduct';
 
 function App() {
-  const [height, setHeight] = useState(0)
-  const ref = useRef<any>()
+  const [height, setHeight] = useState(0);
+  const ref = useRef<any>();
   useEffect(() => {
     setHeight(ref.current.clientHeight)
   },[])
@@ -28,6 +32,10 @@ function App() {
         <Route path="/" element={<Home/>}/>
         <Route path="/product/:id" element={<SingleProduct/>}/>
         <Route path="/products/:category" element={<CategoryBasedProduct/>}/>
+        <Route path="/products-for/:gander" element={<GanderBasedProduct/>}/>
+        <Route path="/filtered-products" element={<FilteredProducts/>}/>
+        <Route path="/shop" element={<Shop/>}/>
+        <Route path="/checkout" element={<CheckOut/>}/>
       </Routes>
     </div>
     <ToastContainer

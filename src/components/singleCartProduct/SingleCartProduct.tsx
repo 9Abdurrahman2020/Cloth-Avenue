@@ -5,7 +5,7 @@ import React from 'react';
 import { Row } from 'react-bootstrap';
 import Rating from 'react-rating';
 import { Link } from 'react-router-dom';
-import { useAppDispatch } from '../../app/hooks';
+import { useAppDispatch } from '../../app/store';
 import { removeCartProduct, setCartPrice } from '../../features/counter/storeSlice';
 import { ICart } from '../../features/Types';
 import './singleCartProduct.css';

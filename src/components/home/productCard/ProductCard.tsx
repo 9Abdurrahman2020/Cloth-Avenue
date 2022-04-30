@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch } from '../../../app/hooks';
+import { useAppDispatch } from '../../../app/store';
 import { IProduct } from '../../../features/Types';
 import './productCard.css';
 
