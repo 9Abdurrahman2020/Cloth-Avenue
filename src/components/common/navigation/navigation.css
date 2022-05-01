@@ -18,26 +18,29 @@
     display: flex;
 }
 .nav-links li .nab-dropdown{
-    background: #ffffff;
+    background: #e32e00;
     display: none;
     position: absolute;
     z-index: 999;
     border-radius: 10px;
-    padding: 0 auto;
+    padding: 5px;
 }
 .nab-dropdown li a{
     display: block;
     padding: 5px 10px;
+    transition: .3s;
 }
 .nab-dropdown li a:hover{
-    color: #e32e00;
+    color: #ffffff;
+    transform: translate(5px);
+    transition: .3s;
 }
-.nav-links li:hover ul.nab-dropdown{
+.nav-links li:hover .nab-dropdown{
     display: block;
 }
 .nav-links a{
     text-decoration: none;
-    color: #6b6f81;
+    color: #ffffff;
 }
 .nav-links li{
     list-style: none;
@@ -73,6 +76,25 @@
 .header{
     border-bottom: 1px solid gainsboro;
 }
+.mobile-nav-right-part{
+    display: grid;    
+    grid-template-columns: repeat(3,1fr);
+    align-items: center;
+    justify-items: center;
+}
+
+.cart-mobile-dropdown{
+    background: #ffffff;
+    display: none;
+    width: 90vw;
+    height: 400px;
+    position: absolute;
+    right: 5%;
+    z-index: 999;
+    border-radius: 5px;
+    padding:10px 0px;
+    box-sizing: border-box;
+    }
 
 @media  screen and (max-width: 768px) {
     .navigation-container{
@@ -106,4 +128,8 @@
     .toggle .line3{
         transform: rotate(45deg) translate(-5px,-5px);
     }
+    .cart-active{
+        display: block;
+    }
+
 }

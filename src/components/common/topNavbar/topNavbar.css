@@ -57,49 +57,55 @@
     padding: 0 5px;
     border-right: 1px solid #ffffff;
 }
-.modal-dialog {
-    position: fixed;
-    top: 12px;
-    right: 15px;
-    width: 350px;
-    max-height: 350px;
-    z-index: 10040;
-    overflow-y: hidden;
-    border: 1px solid rgb(155, 154, 154);
-  }
-.modal-body{
-    max-height: 300px;
-    overflow-y: scroll;
-}
-.modal-footer{
-    display: flex;
-    justify-content: center;
-    height: 50px;
-    padding: 0;
-}
+
 .cart-button-1{
-    width: 40%;
+    width: 75%;
     border: 1px solid #e32e00;
     background-color: #ffffff;
     color: #e32e00;
-    padding: 5px 0;
+    padding: 7px;
 }
 .cart-button-1:hover{
     background-color: #e32e00;
     color: #ffffff;
 }
-  .modal-backdrop.show {
-    opacity: 0;
+.top-nav-right{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    align-items: center;
+    margin: 0;
 }
-.search-result-box{
-    background: #000;
+.top-nav-right li{
+    list-style-type: none;
     color: #ffffff;
-    height: 70vh;
-    position: relative;
-
 }
-.top-nav-bar-container{
+.top-nav-right li:hover{
+    color: #ebe8e8;
+}
+.cart-dropdown{
+    background: #ffffff;
+    width: 350px;
+    height: 400px;
+    display: none;
     position: absolute;
+    right: 5%;
+    z-index: 999;
+    border-radius: 5px;
+    padding:10px 0px;
+    box-sizing: border-box;
+}
+.cart-box:hover .cart-dropdown{
+    display: block;
+}
+.cart-product-section{
+    height: 320px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.cart-button-section{
+    height: 80px;
+    padding: 10px;
+    text-align: center;
 }
 
 @media  screen and (max-width: 768px) {

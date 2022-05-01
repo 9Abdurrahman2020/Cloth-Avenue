@@ -76,7 +76,7 @@ const Shop = () => {
                     <div className="col-md-3 ">
                         <Button onClick={ ()=> setFilterBtn(!filterBtn)} className="category-page-filter-button mx-auto" variant="danger">Filter</Button>
                         <div className={`${ !filterBtn && 'mobile-filter-box'}`}>
-                            <h4>Price($1 -${searchData.price})</h4>
+                            <h4 className='mt-3'>Price($1 -${searchData.price})</h4>
                             <input onChange={ onChangeHandler } type="range" min="2" max="50" className="form-range" id="customRange1" name='price'/>
                             <div className="my-4">
                                 <h5 className="mt-4">Department</h5>
@@ -132,9 +132,9 @@ const Shop = () => {
                             <p>When you open and shop with your new <br />Avenue Rewards Credit Card</p>
                         </div>
                         <Row>
-                            {
-                               products.length > 0 ? products?.map( pd=> <ProductCard key={pd._id} data={pd} category="shop"/>) : <h3 className="text-danger text-center my-5"> No Product Found !</h3>
-                            }
+                        {
+                            products.length > 0 ? products?.map( pd=> <ProductCard key={pd._id} data={pd} category="category"/>) : <h3 className="text-danger text-center my-5"> No Product Found !</h3>
+                        }
                         </Row>
                     </div>
                 </Row>

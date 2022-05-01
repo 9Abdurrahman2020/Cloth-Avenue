@@ -1,9 +1,14 @@
 .checkout-page-container{
-    background: rgb(226, 226, 226);
+    background: #eeeeee;
     padding: 20px 0 70px;
 }
 .checkout-product-section{
     margin-top: -50px;
     background-color: #fff;
     padding: 20px;
+}
+@media only screen and ( max-width: 778px) {
+    .check-out-top-section{
+        display: none;
+    }
 }

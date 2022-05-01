@@ -37,7 +37,8 @@ export interface InitialState {
     singleProduct: IProduct,
     categoryBasedProducts: IProduct[],
     cartPrice: number,
-    filter: ISearch
+    filter: ISearch,
+    navHeight: number
   }
 export interface ISearch{
     [key: string ]: string

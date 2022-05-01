@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useAppDispatch } from './app/store';
 import CategoryBasedProduct from './components/categoryBasedProduct/CategoryBasedProduct';
 import CheckOut from './components/checkOut/CheckOut';
 import Footer from './components/common/footer/Footer';
@@ -13,13 +14,17 @@ import GanderBasedProduct from './components/ganderBasedProduct/GanderBasedProdu
 import Home from './components/home/Home';
 import Shop from './components/shop/Shop';
 import SingleProduct from './components/singleProduct/SingleProduct';
+import { setNavHeight } from './features/counter/storeSlice';
 
 function App() {
   const [height, setHeight] = useState(0);
   const ref = useRef<any>();
+  const dispatch = useAppDispatch()
   useEffect(() => {
     setHeight(ref.current.clientHeight)
+    dispatch(setNavHeight(ref.current.clientHeight))
   },[])
+  console.log(height);
   
   return (
     <BrowserRouter>
@@ -36,6 +41,7 @@ function App() {
         <Route path="/filtered-products" element={<FilteredProducts/>}/>
         <Route path="/shop" element={<Shop/>}/>
         <Route path="/checkout" element={<CheckOut/>}/>
+
       </Routes>
     </div>
     <ToastContainer

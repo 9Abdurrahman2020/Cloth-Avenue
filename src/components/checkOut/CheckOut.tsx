@@ -14,6 +14,7 @@ const CheckOut = () => {
                 <h3 className="text-center">Total: ${cartPrice.toFixed(2)}</h3>
             </div>
             <Container className="checkout-product-section">
+            <div className="check-out-top-section">
             <Row>
                 <div className="col-md-5">
                     Item
@@ -29,6 +30,7 @@ const CheckOut = () => {
                 </div>
             </Row>
             <hr />
+            </div>
             { cartProduct.map( pd=> <CheckoutSingleProduct key={pd._id} pd={pd}/>)}
             </Container>
         </div>

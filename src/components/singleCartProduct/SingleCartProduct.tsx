@@ -29,9 +29,9 @@ const SingleCartProduct = ({data}:{data:ICart}) => {
                 fullSymbol={<FontAwesomeIcon style={{fontSize:"12px"}} className='text-warning' icon={faStar}/>}
                 emptySymbol={<FontAwesomeIcon style={{fontSize:"12px"}} className='empty-star-icon' icon={regStar}/>}
                 /> <br />
-                <small className="my-1">Each: ${data.price}</small> <br />
-                <small className="my-1">Quantity: {data.quantity}</small> <br />
-                <b className="my-1">Total: ${((data.price) * (data.quantity)).toFixed(2)}</b>
+                <small className="my-1 text-black">Each: ${data.price}</small> <br />
+                <small className="my-1 text-black">Quantity: {data.quantity}</small> <br />
+                <b className="my-1 text-black">Total: ${((data.price) * (data.quantity)).toFixed(2)}</b>
             </div>
             <div className="col-2">
                 <button onClick={ removeBtnHandler } className="btn btn-danger">X</button>

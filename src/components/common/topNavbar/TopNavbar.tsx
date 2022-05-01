@@ -1,7 +1,6 @@
 import { faBagShopping, faEnvelope, faPhone, faSearch, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
-import { Modal } from 'react-bootstrap';
 import FormControl from 'react-bootstrap/FormControl';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { useNavigate } from 'react-router-dom';
@@ -30,7 +29,7 @@ const TopNavbar = () => {
     }
     return (
         <div>
-            <Modal show={show} onHide={handleClose} animation={false}>
+            {/* <Modal show={show} onHide={handleClose} animation={false}>
         
                 <Modal.Body >
                     {
@@ -42,7 +41,7 @@ const TopNavbar = () => {
                 <button onClick={ ()=> navigateBtnHandler('/checkout')} className="cart-button-1" >View Cart</button>
                 <button className="cart-button-1" >CheckOut</button>
                 </Modal.Footer>}
-            </Modal>
+            </Modal> */}
 
            <div className="top-nav-container">
                <div className='topNab-contact'>
@@ -61,13 +60,34 @@ const TopNavbar = () => {
                     </InputGroup>
                </div>
                <div className="topNab-other">
-                    <p onClick={handleShow} className="cart-box" title="cart"><FontAwesomeIcon className='me-1' style={{fontSize:"20px"}} icon={faBagShopping}/><sup>{cart.length}</sup><span style={{fontSize:"14px"}} className='ms-2'> ${cartPrice.toFixed(2)} </span></p>
-                    <div className='vertical-line me-1'></div>
-                    <p><span title="Login in" style={{fontSize:"20px"}}><FontAwesomeIcon icon={faUserCircle}/></span></p>
-                    <div className='vertical-line me-1'></div>
-                    <p>EN</p>
-                    <div className='vertical-line me-1'></div>
-                    <p>US($)</p>
+               <ul className='top-nav-right'>
+                    <li onClick={handleShow} className="cart-box" title="cart">
+                            <FontAwesomeIcon icon={faBagShopping}/>
+                            <sup>{cart.length}</sup>
+                            <span style={{fontSize:"14px"}} className='ms-2'> ${cartPrice.toFixed(2)} </span>
+                        <div className="cart-dropdown shadow">
+                        <div className="cart-product-section">
+                        {
+                            cart.length > 0 ? cart.map(pd => <SingleCartProduct key={pd._id} data={pd}/>) : <h5 className="text-success text-center">No product in your cart !</h5>
+                        }
+                        </div>
+                        <div className="cart-button-section">
+                            <button className="cart-button-1">Checkout</button>
+                        </div>
+                        </div>
+                    </li>
+                    <li className='text-center'>
+                        <p><span title="Login in" ><FontAwesomeIcon icon={faUserCircle}/></span></p>
+                    </li>
+                    
+                    <li className='text-center'>
+                        <p>EN</p>
+                    </li>
+                    
+                    <li className='text-center'>
+                        <p>US($)</p>
+                    </li>
+               </ul>
                </div>
            </div>
         </div>

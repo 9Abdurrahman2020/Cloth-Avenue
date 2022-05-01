@@ -1,3 +1,13 @@
+.checkout-remove-button{
+    color:#e32e00 ;
+    cursor: pointer;
+    font-size: 14px;
+}
 .checkout-remove-button:hover{
     text-decoration: underline;
+}
+@media only screen and ( max-width: 778px ) {
+    .quantity-box{
+        text-align: left !important;
+    }
 }
