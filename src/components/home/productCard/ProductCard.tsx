@@ -79,7 +79,7 @@ const  ProductCard = ({data, category}:{data:IProduct, category?:string}) => {
         <Modal.Header  closeButton={true}>
         </Modal.Header>
         <Modal.Body>
-        <Row className="g-3 py-5">
+        <Row className="g-3">
                 <div className="col-md-6">
                     <InnerImageZoom
                     src={data.img}

@@ -1,0 +1,35 @@
+.user-profile-container{
+    background: rgb(224, 224, 224);
+}
+.user-profile-content{
+    background: #ffffff;
+    min-height: 90vh;
+}
+ul{
+    user-select: none;
+}
+.profile-menu a{
+    text-decoration: none;
+    color: black;
+}
+.profile-menu li{
+    list-style-type: none;
+    margin: 10px 0;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: all .2s;
+}
+.profile-menu li:hover{
+    color: #ffffff;
+    background: #e32e00;
+}
+.nav-active{
+    color: #ffffff;
+    background: #e32e00;
+}
+/* responsive */
+@media only screen and (max-width: 778px){
+    .user-menu-container{
+        display: none;
+    }
+}

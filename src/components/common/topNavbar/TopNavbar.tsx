@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import FormControl from 'react-bootstrap/FormControl';
 import InputGroup from 'react-bootstrap/InputGroup';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../app/store';
 import { setCartPrice } from '../../../features/counter/storeSlice';
 import { ICart } from '../../../features/Types';
@@ -72,12 +72,12 @@ const TopNavbar = () => {
                         }
                         </div>
                         <div className="cart-button-section">
-                            <button className="cart-button-1">Checkout</button>
+                            <Link to="/checkout"><button className="cart-button-1">Checkout</button></Link>
                         </div>
                         </div>
                     </li>
                     <li className='text-center'>
-                        <p><span title="Login in" ><FontAwesomeIcon icon={faUserCircle}/></span></p>
+                        <Link className="text-white" to="/user-profile"><p><span title="Profile" ><FontAwesomeIcon icon={faUserCircle}/></span></p></Link>
                     </li>
                     
                     <li className='text-center'>

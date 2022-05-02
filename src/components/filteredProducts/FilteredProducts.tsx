@@ -28,13 +28,13 @@ const FilteredProducts = () => {
 
     useEffect( ()=>{
         if(searchData.brand){
-            setProducts(allProduct.filter(p=> p.for.toLowerCase() === searchData.department.toLowerCase() && p.category.toLowerCase() === searchData.type.toLowerCase() && p.brand.toLowerCase() === searchData.brand.toLowerCase() && p.price <= parseInt(searchData.price)))
+            setProducts(allProduct.filter(p=> p.for?.toLowerCase() === searchData.department?.toLowerCase() && p.category?.toLowerCase() === searchData.type?.toLowerCase() && p.brand?.toLowerCase() === searchData.brand?.toLowerCase() && p?.price <= parseInt(searchData.price)))
         }
         else if(searchData.type){
-            setProducts(allProduct.filter(p=> p.for.toLowerCase() === searchData.department.toLowerCase() && p.category.toLowerCase() === searchData.type.toLowerCase() && p.price <= parseInt(searchData.price)))
+            setProducts(allProduct.filter(p=> p.for?.toLowerCase() === searchData.department?.toLowerCase() && p.category?.toLowerCase() === searchData.type?.toLowerCase() && p?.price <= parseInt(searchData.price)))
         }else{
             console.log(' department');
-            const newProducts = allProduct.filter(p=> (p.for.toLowerCase() === searchData.department.toLowerCase()) && (p.price <= parseInt(searchData.price)))
+            const newProducts = allProduct.filter(p=> (p.for?.toLowerCase() === searchData.department?.toLowerCase()) && (p?.price <= parseInt(searchData.price)))
             setProducts(newProducts)
         }
     },[allProduct,searchData])

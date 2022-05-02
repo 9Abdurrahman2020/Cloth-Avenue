@@ -73,7 +73,7 @@ const Navigation = () => {
                     }
                     </div>
                     <div className="cart-button-section">
-                        <button className="cart-button-1">Checkout</button>
+                        <Link to="/checkout"><button className="cart-button-1">Checkout</button></Link>
                     </div>
                 </div>
                </div>

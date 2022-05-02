@@ -15,6 +15,14 @@ import Review from '../common/review/Review';
 import './singleProduct.css';
 
 const SingleProduct = () => {
+    interface Reviews {
+        _id: string,
+        id: string,
+        name: string,
+        email: string,
+        comments: string,
+        rate: number
+    }
     const { id } = useParams<string>();
     const [ size, setSize ] = useState<string>('S');
     const [ quantity, setQuantity ] = useState<number>(1);  
@@ -23,6 +31,7 @@ const SingleProduct = () => {
     const product = useAppSelector( (state)=>state.singleProduct );
     const [ currentProduct, setCurrentProduct ] = useState<Boolean>(false)
     const [ reviewBtn, setReviewBtn ] = useState<Boolean>(false)
+    const [ reviews, setReviews ] = useState<Reviews[]>([])
     
     useEffect( ()=>{
         dispatch(setSingleProduct((initialProduct)));
@@ -40,6 +49,11 @@ const SingleProduct = () => {
             setSize(thisProduct.size)
         }
     },[id])
+    useEffect( ()=>{
+        fetch(`http://localhost:5000/reviews/${id}`)
+        .then(res=>res.json())
+        .then( data => setReviews(data))
+    },[id,reviewBtn])
     if(!product.price){
         return (
             <div className="loading-image-container">
@@ -55,20 +69,16 @@ const SingleProduct = () => {
         if(operator === 'minus'){
             if(quantity>1){
                 setQuantity(quantity-1)
-                console.log('set quantity', quantity-1);
                 if(currentProduct){
                     dispatch(setCartProduct({...product,price:parseFloat(price.toFixed(2)),quantity: quantity-1,size}))
-                    console.log('minus clicked', quantity);
                     dispatch( setCartPrice())
                 }
             }
         }else if(operator === 'plus'){
             if(quantity< product.stock){
                 setQuantity(quantity+1)
-                console.log('set quantity', quantity+1);
                 if(currentProduct){
                     dispatch(setCartProduct({...product,price:parseFloat(price.toFixed(2)),quantity: quantity+1,size}))
-                    console.log('plus clicked', operator, quantity);
                     dispatch( setCartPrice())
                 }
             }else{
@@ -155,10 +165,21 @@ const SingleProduct = () => {
                     <div><Button onClick={ ()=> setReviewBtn(!reviewBtn)} variant="danger">Write a review</Button></div>
                 </div>
                 {
-                    reviewBtn && <Review setReviewBtn={setReviewBtn}/>
+                    reviewBtn && <Review id={product._id} setReviewBtn={setReviewBtn}/>
                 }
                 <div className="mt-3">
-                    
+                    {
+                        reviews.map( r => <div className='card my-3 p-3' key={r._id}>
+                            <h5>{r.name}</h5>
+                            <Rating
+                            readonly
+                            initialRating={r.rate}
+                            fullSymbol={<FontAwesomeIcon className='text-warning' icon={faStar}/>}
+                            emptySymbol={<FontAwesomeIcon className='empty-star-icon' icon={regStar}/>}
+                            />
+                            <p className='mb-0'>{r.comments}</p>
+                        </div>)
+                    }
                 </div>
             </div>
         </Container>

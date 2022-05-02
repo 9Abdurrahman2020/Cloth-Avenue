@@ -14,6 +14,11 @@ import GanderBasedProduct from './components/ganderBasedProduct/GanderBasedProdu
 import Home from './components/home/Home';
 import Shop from './components/shop/Shop';
 import SingleProduct from './components/singleProduct/SingleProduct';
+import Login from './components/userProfile/login/Login';
+import Orders from './components/userProfile/orders/Orders';
+import Profile from './components/userProfile/profile/Profile';
+import Registration from './components/userProfile/registration/Registration';
+import UserProfile from './components/userProfile/UserProfile';
 import { setNavHeight } from './features/counter/storeSlice';
 
 function App() {
@@ -24,7 +29,6 @@ function App() {
     setHeight(ref.current.clientHeight)
     dispatch(setNavHeight(ref.current.clientHeight))
   },[])
-  console.log(height);
   
   return (
     <BrowserRouter>
@@ -41,6 +45,15 @@ function App() {
         <Route path="/filtered-products" element={<FilteredProducts/>}/>
         <Route path="/shop" element={<Shop/>}/>
         <Route path="/checkout" element={<CheckOut/>}/>
+        
+
+        <Route path="/user-profile" element={<UserProfile/>}>
+          <Route path="/user-profile/" element={<Profile/>}/>
+          <Route path="/user-profile/my-orders" element={<Orders/>}/>
+          <Route path="/user-profile/login" element={<Login/>}/>
+          <Route path="/user-profile/registration" element={<Registration/>}/>
+
+        </Route>
 
       </Routes>
     </div>

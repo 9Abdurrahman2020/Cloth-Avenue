@@ -4,12 +4,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import { Button, Form, FormControl } from 'react-bootstrap';
 import Rating from 'react-rating';
+import { toast } from 'react-toastify';
 
-const Review = ({setReviewBtn}:{setReviewBtn:any}) => {
+const Review = ({setReviewBtn, id}:{setReviewBtn:any, id: string}) => {
     interface IReview {
         [key: string]: any
     }
-    const [ reviewData, setReviewData ] = useState<IReview>();
+    const [ reviewData, setReviewData ] = useState<IReview>({id: id});
     const [ rating, setRating ] = useState(0)
     const onBlurHandler = (e:React.FocusEvent<HTMLInputElement>):void=>{
         const name:string = e.target.name;
@@ -26,11 +27,25 @@ const Review = ({setReviewBtn}:{setReviewBtn:any}) => {
     const handleOnSubmit = (e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault()
         console.log(reviewData);
-        setReviewBtn(false)
+        fetch('http://localhost:5000/reviews',{
+            method:"POST",
+            headers:{
+                "content-type":"application/json"
+            },
+            body: JSON.stringify(reviewData)
+        })
+        .then(res=>res.json())
+        .then( result => {
+            if(result.acknowledged) {
+                toast('Successfully placed your review !')
+                setReviewBtn(false)
+            }
+        })
+        
     }
     
     return (
-        <div className='my-5'>
+        <div style={{transition:"all 0.4s"}} className='my-5'>
             <form onSubmit={handleOnSubmit}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Name</Form.Label>
