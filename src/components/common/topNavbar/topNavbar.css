@@ -6,6 +6,11 @@
     color: #ffffff;
     padding: 0 20px;
 }
+.profile-pic{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
 .topNab-contact span{
     font-size: 14px;
     margin-right: 5px;

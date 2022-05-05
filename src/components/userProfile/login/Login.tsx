@@ -3,15 +3,18 @@ import { faKey } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import { Button, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import useAuth from '../../../hook/useAuth';
 import './login.css';
 
 const Login = () => {
     interface ILogin {
         [key: string]: any
     }
-
+    const { googleSignIn } = useAuth()
+    const navigate = useNavigate();
     const [ inputData, setInputData ] = useState<ILogin>({});
+    const { loginUser, error } = useAuth();
 
     const handleOnBlur = (e:React.FocusEvent<HTMLInputElement>) =>{
         const field = e.target.name;
@@ -22,6 +25,8 @@ const Login = () => {
     }
     const handleFormSubmit = (e:React.FormEvent<HTMLFormElement>) =>{
         e.preventDefault()
+        loginUser(inputData)
+        navigate("/user-profile");
     }
     return (
         <div className='login-container'>
@@ -41,12 +46,12 @@ const Login = () => {
                             <input onBlur={ handleOnBlur } type="password" className="form-control" name="password" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" required/>
                         </div>
                         <p style={{textAlign:'left'}}>New ? <Link style={{textDecoration:'none'}} to="/user-profile/registration">Create an account <i className="fas fa-arrow-right"></i></Link></p>
-                        <span className="text-danger">{''}</span>
+                        <span className="text-danger">{error}</span>
                         <input className='btn btn-success login-button' type="submit" value="Login" />
                     </form>
                     <div>
                         <p className="my-3">or</p>
-                        <Button variant="danger"><i className="fab fa-google"></i> Sign in with Google</Button>
+                        <Button onClick={ googleSignIn } variant="danger"><i className="fab fa-google"></i> Sign in with Google</Button>
                     </div>
                 </div>
             </Row>

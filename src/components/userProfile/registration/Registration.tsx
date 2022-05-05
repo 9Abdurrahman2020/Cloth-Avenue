@@ -4,12 +4,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import { Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import useAuth from '../../../hook/useAuth';
 
 const Registration = () => {
     interface IRegistration {
         [key: string]: any
     }
     const [ inputData, setInputData ] = useState<IRegistration>({});
+    const { registerUser, error } = useAuth()
     
 
     const handleOnBlur = (e:React.FocusEvent<HTMLInputElement>) =>{
@@ -22,7 +24,9 @@ const Registration = () => {
 
     const handleFormSubmit = (e:React.FormEvent<HTMLFormElement>) =>{
         e.preventDefault()
+        registerUser(inputData)
     }
+    console.log(error);
 
     return (
         <div className='login-container'>
@@ -46,7 +50,7 @@ const Registration = () => {
                             <input onBlur={ handleOnBlur } type="password" className="form-control" name="password" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" required/>
                         </div>
                         <p style={{textAlign:'left'}}>Already have an Account ? <Link style={{textDecoration:'none'}} to="/user-profile/login">Login <i className="fas fa-arrow-right"></i></Link></p>
-                        <span className="text-danger">{''}</span>
+                        <span className="text-danger">{error}</span>
                         <input className='btn btn-success login-button' type="submit" value="Register" />
                     </form>
                 </div>

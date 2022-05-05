@@ -9,12 +9,14 @@ import CheckOut from './components/checkOut/CheckOut';
 import Footer from './components/common/footer/Footer';
 import Navigation from './components/common/navigation/Navigation';
 import TopNavbar from './components/common/topNavbar/TopNavbar';
+import AuthProvider from './components/context/AuthProvider';
 import FilteredProducts from './components/filteredProducts/FilteredProducts';
 import GanderBasedProduct from './components/ganderBasedProduct/GanderBasedProduct';
 import Home from './components/home/Home';
 import Shop from './components/shop/Shop';
 import SingleProduct from './components/singleProduct/SingleProduct';
 import Login from './components/userProfile/login/Login';
+import MakeAdmin from './components/userProfile/makeAdmin/MakeAdmin';
 import Orders from './components/userProfile/orders/Orders';
 import Profile from './components/userProfile/profile/Profile';
 import Registration from './components/userProfile/registration/Registration';
@@ -31,6 +33,7 @@ function App() {
   },[])
   
   return (
+    <AuthProvider>
     <BrowserRouter>
     <div ref={ref} className="fixed-top header">
       <TopNavbar/>
@@ -46,11 +49,13 @@ function App() {
         <Route path="/shop" element={<Shop/>}/>
         <Route path="/checkout" element={<CheckOut/>}/>
         
-
         <Route path="/user-profile" element={<UserProfile/>}>
-          <Route path="/user-profile/" element={<Profile/>}/>
+          
+          <Route path="/user-profile" element={<Profile/>}/>
           <Route path="/user-profile/my-orders" element={<Orders/>}/>
           <Route path="/user-profile/login" element={<Login/>}/>
+          <Route path="/user-profile/logout" element={<Login/>}/>
+          <Route path="/user-profile/make-admin" element={<MakeAdmin/>}/>
           <Route path="/user-profile/registration" element={<Registration/>}/>
 
         </Route>
@@ -63,6 +68,7 @@ function App() {
     />
     <Footer/>
     </BrowserRouter>
+    </AuthProvider>
   );
 }
 

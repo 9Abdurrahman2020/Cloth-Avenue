@@ -64,7 +64,6 @@ const Shop = () => {
             </div>
         )
     }
-    console.log(searchData);
     
     return (
         <div>

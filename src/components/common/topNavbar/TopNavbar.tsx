@@ -7,6 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../app/store';
 import { setCartPrice } from '../../../features/counter/storeSlice';
 import { ICart } from '../../../features/Types';
+import useAuth from '../../../hook/useAuth';
 import SingleCartProduct from '../../singleCartProduct/SingleCartProduct';
 import './topNavbar.css';
 
@@ -16,6 +17,7 @@ const TopNavbar = () => {
     const cartPrice = useAppSelector( state=> state.cartPrice)
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
+    const { user } = useAuth();
     useEffect( ()=>{
         dispatch(setCartPrice())
     },[])
@@ -29,20 +31,6 @@ const TopNavbar = () => {
     }
     return (
         <div>
-            {/* <Modal show={show} onHide={handleClose} animation={false}>
-        
-                <Modal.Body >
-                    {
-                        cart.length > 0 ? cart.map(pd => <SingleCartProduct key={pd._id} data={pd}/>) : <h5 className="text-success text-center">No product in your cart !</h5>
-                    }
-                </Modal.Body>
-                
-                {cart.length > 0 && <Modal.Footer className="modal-footer">
-                <button onClick={ ()=> navigateBtnHandler('/checkout')} className="cart-button-1" >View Cart</button>
-                <button className="cart-button-1" >CheckOut</button>
-                </Modal.Footer>}
-            </Modal> */}
-
            <div className="top-nav-container">
                <div className='topNab-contact'>
                 <span><FontAwesomeIcon icon={faPhone}/> +8801648308424 </span>
@@ -77,7 +65,7 @@ const TopNavbar = () => {
                         </div>
                     </li>
                     <li className='text-center'>
-                        <Link className="text-white" to="/user-profile"><p><span title="Profile" ><FontAwesomeIcon icon={faUserCircle}/></span></p></Link>
+                        <Link className="text-white" to="/user-profile"><p>{ user?.photoURL ? <img className='profile-pic' src={user.photoURL} alt="profile" /> : <span className='profile-pic' title="Profile" ><FontAwesomeIcon icon={faUserCircle}/></span> }</p></Link>
                     </li>
                     
                     <li className='text-center'>
