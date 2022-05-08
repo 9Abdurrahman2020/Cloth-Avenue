@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Row } from 'react-bootstrap';
+import { Button, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useAppDispatch } from '../../../app/store';
@@ -33,7 +33,8 @@ const CheckoutSingleProduct = ({pd}:{pd:ICart}) => {
         dispatch(setCartPrice())
     }
     return (
-        <Row className="align-items-center ">
+        <>
+        <Row className="align-items-center py-2">
                 <div className="row col-6 col-md-3 align-items-center">
                     <div className="col-md-6">
                         <img width="100%" src={pd.img} alt="product img" />
@@ -57,12 +58,16 @@ const CheckoutSingleProduct = ({pd}:{pd:ICart}) => {
                         <span onClick={ cartProductRemoveHandler } className="checkout-remove-button">Remove</span>
                     </div>
                 </div>
-                <div className="col-md-2">
-                    ${(pd.price * pd.quantity).toFixed(2)}
+                <div className="col-md-2 py-2">
+                    <p>${(pd.price * pd.quantity).toFixed(2)}</p>
+                    <Link to={`/belling-address/${pd._id}`}>
+                        <Button variant="danger">Checkout</Button>
+                    </Link>
                 </div>
                 </div>
-                <hr />
-            </Row> 
+            </Row>
+            <hr/>
+        </> 
     );
 };
 

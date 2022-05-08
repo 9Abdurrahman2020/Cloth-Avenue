@@ -60,7 +60,7 @@ const TopNavbar = () => {
                         }
                         </div>
                         <div className="cart-button-section">
-                            <Link to="/checkout"><button className="cart-button-1">Checkout</button></Link>
+                            <Link to="/checkout"><button className="cart-button-1">View Cart</button></Link>
                         </div>
                         </div>
                     </li>

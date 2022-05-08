@@ -19,6 +19,8 @@ const useFirebase = () => {
   const [user, setUser] = useState();
   const [error, setError] = useState("");
   const [role, setRole] = useState("");
+  const [userLoading, setUserLoading] = useState(true);
+  const [adminLoading, setAdminLoading] = useState(true);
 
   const roleCheckUp = (email) => {
     setRole("");
@@ -26,6 +28,7 @@ const useFirebase = () => {
       .then((res) => res.json())
       .then((data) => {
         setRole(data);
+        setAdminLoading(false);
       });
   };
 
@@ -76,8 +79,10 @@ const useFirebase = () => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
+        setUserLoading(false);
         roleCheckUp(user.email);
       }
+      setUserLoading(false);
     });
   }, [user]);
 
@@ -111,6 +116,8 @@ const useFirebase = () => {
     registerUser,
     loginUser,
     role,
+    userLoading,
+    adminLoading,
   };
 };
 export default useFirebase;

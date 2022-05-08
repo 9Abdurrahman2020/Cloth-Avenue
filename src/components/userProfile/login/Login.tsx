@@ -11,6 +11,7 @@ const Login = () => {
     interface ILogin {
         [key: string]: any
     }
+    
     const { googleSignIn } = useAuth()
     const navigate = useNavigate();
     const [ inputData, setInputData ] = useState<ILogin>({});

@@ -1,0 +1,13 @@
+.payment-method-box-container{
+    display: flex;
+    gap: 10px;
+    user-select: none;
+}
+.payment-method-box{
+    padding: 20px 15px;
+    border: 1px solid lightgray;
+}
+.active-payment-method{
+    border: 1px solid #e32e00;
+    color: #e32e00;
+}

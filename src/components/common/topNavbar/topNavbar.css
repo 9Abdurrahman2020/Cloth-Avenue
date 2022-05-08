@@ -90,7 +90,7 @@
 .cart-dropdown{
     background: #ffffff;
     width: 350px;
-    height: 400px;
+    max-height: 400px;
     display: none;
     position: absolute;
     right: 5%;
@@ -103,7 +103,7 @@
     display: block;
 }
 .cart-product-section{
-    height: 320px;
+    max-height: 320px;
     overflow-y: scroll;
     overflow-x: hidden;
 }
