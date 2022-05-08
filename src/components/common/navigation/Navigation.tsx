@@ -78,7 +78,7 @@ const Navigation = () => {
                 </div>
                </div>
                <div>
-                   <span className='mobile' title="Login in" style={{fontSize:"20px"}}><FontAwesomeIcon icon={faUserCircle}/></span>
+                   <Link style={{color:'#6b6f81'}} to="/user-profile"><span className='mobile' title="Login in" style={{fontSize:"20px"}}><FontAwesomeIcon icon={faUserCircle}/></span></Link>
                 </div>
                 <div onClick={ ()=> setActiveNav(!activeNav) } className={`burger ${activeNav && 'toggle'}`}>
                     <div className='line1'></div>

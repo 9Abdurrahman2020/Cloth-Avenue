@@ -63,6 +63,10 @@ const  ProductCard = ({data, category}:{data:IProduct, category?:string}) => {
   const handleRouteOnClick = () =>{
     navigate(`/product/${data._id}`)
   }
+  const buyBtnClickHandler = () =>{
+    dispatch(setCartProduct({...data,price:parseFloat(price.toFixed(2)),quantity,size}))
+    navigate(`/belling-address/${data._id}`)
+  }
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -123,7 +127,7 @@ const  ProductCard = ({data, category}:{data:IProduct, category?:string}) => {
                             <button onClick={ cartProductHandler } className='btn btn-outline-danger w-100 my-2'><FontAwesomeIcon icon={faCartPlus}/> Add to Cart</button>
                         </div>
                         <div className="col-12">
-                            <button className='btn btn-danger w-100 my-2'>Buy it now</button>
+                            <button onClick={ buyBtnClickHandler } className='btn btn-danger w-100 my-2'>Buy it now</button>
                         </div>
                     </Row>
                 </div>

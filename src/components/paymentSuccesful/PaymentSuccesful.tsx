@@ -82,7 +82,7 @@ const PaymentSuccesful = () => {
                 <p>${(product?.price*product?.quantity).toFixed(2)}</p>
                 </div>
             </Row>
-            <p className='text-center my-1'>Thank your !</p>
+            <p className='text-center my-1'>Thank you !</p>
             <p className='text-secondary text-center my-1'>{firstName} {lastName}</p>
         </Container>
     );
