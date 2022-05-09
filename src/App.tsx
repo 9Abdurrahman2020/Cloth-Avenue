@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import './app.css';
 import { useAppDispatch } from './app/store';
 import BellingAddress from './components/bellingAddress/BellingAddress';
 import CategoryBasedProduct from './components/categoryBasedProduct/CategoryBasedProduct';
@@ -29,18 +30,39 @@ import { setNavHeight } from './features/counter/storeSlice';
 
 function App() {
   const [height, setHeight] = useState(0);
+  const [isVisible, setIsVisible] = useState<boolean>(true);
   const ref = useRef<any>();
   const dispatch = useAppDispatch()
   useEffect(() => {
     setHeight(ref.current.clientHeight)
     dispatch(setNavHeight(ref.current.clientHeight))
   },[])
+  const listenToScroll = () => {
+    let heightToHideFrom = 100;
+    const winScroll = document.body.scrollTop || 
+        document.documentElement.scrollTop;
+       
+    if (winScroll > heightToHideFrom) { 
+       isVisible &&      // to limit setting state only the first time         
+         setIsVisible(false);
+    } else {
+         setIsVisible(true);
+    }  
+  };
+  useEffect(() => {   
+    
+    window.addEventListener("scroll", listenToScroll);
+    return () => 
+       window.removeEventListener("scroll", listenToScroll); 
+  }, [])
   
   return (
     <AuthProvider>
     <BrowserRouter>
     <div ref={ref} className="fixed-top header">
-      <TopNavbar/>
+      {
+        (window.innerWidth > 769 || isVisible ) && <TopNavbar/>
+      }
       <Navigation/>
     </div>
     <div style={{marginTop:`${height}px`}} className='main-body'>

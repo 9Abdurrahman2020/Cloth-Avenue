@@ -1,22 +1,29 @@
 import { faBagShopping, faSearch, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState } from 'react';
-import { FormControl, InputGroup } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
+import { ButtonGroup, DropdownButton, FormControl, InputGroup } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../../app/store';
 import logo from '../../../images/logo/logo.png';
 import SingleCartProduct from '../../singleCartProduct/SingleCartProduct';
 import './navigation.css';
 const Navigation = () => {
     const [activeNav, setActiveNav ] = useState<Boolean>(false);
-    const cart = useAppSelector(state=> state.cart)
+    const cart = useAppSelector(state=> state.cart);
     const [show, setShow] = useState<boolean>(false);
-    const navigate = useNavigate();
+    const cartRef = useRef<HTMLDivElement>(null);
 
-    
-    const navigateBtnHandler = (url:string) =>{
-        navigate(url)
-    }
+    useEffect( ()=>{
+        const handler = (event:any)=>{
+            if(!cartRef.current?.contains(event.target)){
+                setShow(false)
+            }
+        }
+            document.addEventListener('mousedown', handler);
+            return ()=> {
+                document.removeEventListener('mousedown', handler)
+            }
+        })
     return (
            <div>
                
@@ -66,7 +73,7 @@ const Navigation = () => {
                <div className='mobile-nav-right-part col-5'>
                <div>
                 <p onClick={ ()=> setShow(!show)} className={`mobile my-0`} title="cart"><FontAwesomeIcon className='me-1' style={{fontSize:"20px"}} icon={faBagShopping}/><sup>{cart.length}</sup></p>
-                <div className={`cart-mobile-dropdown shadow ${show && 'cart-active'}`}>
+                <div ref={cartRef} className={`cart-mobile-dropdown shadow ${show && 'cart-active'}`}>
                     <div className="cart-product-section">
                     {
                         cart.length > 0 ? cart.map(pd => <SingleCartProduct key={pd._id} data={pd}/>) : <h5 className="text-success text-center">No product in your cart !</h5>
@@ -88,10 +95,48 @@ const Navigation = () => {
                </div>
                     
                 </div>
-                <div className={`responsive-nav-menu ${activeNav && 'active-nav'}`}>
-                    <h1>Men's</h1>
-                    <h1>Woman's</h1>
-                    <h1>Kid's</h1>
+                <div className={`responsive-nav-menu ${activeNav && 'active-nav'} py-3`}>
+                <DropdownButton
+                    className="mobile-dropdown-box my-2"
+                    as={ButtonGroup}
+                    key='end'
+                    id='dropdown-button-drop-end'
+                    drop='end'
+                    variant="danger"
+                    title="Men's"
+                >
+                    <Link to="/products/t-shirt">T-Shirt</Link> <br />
+                    <Link to="/products/jeans">Jeans</Link> <br />
+                    <Link to="/products/shirts">Shirt</Link> <br />
+                    <Link to="/products/shorts">Shorts</Link> <br />
+                </DropdownButton> <br />
+                <DropdownButton
+                    className="mobile-dropdown-box my-2"
+                    as={ButtonGroup}
+                    key='end'
+                    id='dropdown-button-drop-end'
+                    drop='end'
+                    variant="danger"
+                    title="Women's"
+                >
+                    <Link to="/products/dress">Dress</Link> <br />
+                    <Link to="/products/tanks">Tanks</Link> <br />
+                    <Link to="/products/skirt">Skirts</Link> <br />
+                    <Link to="/products/blouse">Blouse</Link> <br />
+                </DropdownButton> <br />
+                <DropdownButton
+                    className="mobile-dropdown-box my-2"
+                    as={ButtonGroup}
+                    key='end'
+                    id='dropdown-button-drop-end'
+                    drop='end'
+                    variant="danger"
+                    title="Kid's"
+                >
+                    <Link to="/products/shirts">Shirts</Link> <br />
+                    <Link to="/products/pants">Pants</Link> <br />
+                </DropdownButton> <br />
+                
                 </div>
            </div>
     );

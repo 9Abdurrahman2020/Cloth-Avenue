@@ -95,6 +95,7 @@
     padding:10px 0px;
     box-sizing: border-box;
     }
+    
 
 @media  screen and (max-width: 768px) {
     .navigation-container{
@@ -116,7 +117,8 @@
     }
     .active-nav{
         display: block;
-        background-color: rgb(207, 207, 207);
+        background-color: #e32e00;
+        color: #ffffff;
         padding: 5px 15px;
     }
     .toggle .line1{
@@ -130,6 +132,20 @@
     }
     .cart-active{
         display: block;
+    }
+    .dropdown-menu{
+        text-align: center;
+    }
+    .dropdown-menu a{
+        display: inline-block;
+        text-decoration: none;
+        color: #e32e00;
+        padding: 5px 15px;
+        border-radius: 5px;
+    }
+    .dropdown-menu a:hover{
+        background: #e32e00;
+        color: #ffffff;
     }
 
 }
