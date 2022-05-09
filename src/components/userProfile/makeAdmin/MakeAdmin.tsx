@@ -10,11 +10,11 @@ const MakeAdmin = () => {
     }
     const handleFormSubmit = (e:React.FormEvent<HTMLFormElement>) =>{
         e.preventDefault()
-        fetch(`http://localhost:5000/role/${inputVal}`)
+        fetch(`https://obscure-eyrie-36427.herokuapp.com/role/${inputVal}`)
       .then((res) => res.json())
       .then((data) => {
         if(data !== null){
-            fetch(`http://localhost:5000/make-admin/${inputVal}`,{
+            fetch(`https://obscure-eyrie-36427.herokuapp.com/make-admin/${inputVal}`,{
                 method: 'PUT'
             })
             .then( res=> res.json())

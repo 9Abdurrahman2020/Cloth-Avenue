@@ -18,7 +18,7 @@ const Home = () => {
     const dispatch = useAppDispatch()
     useEffect( ()=>{
         dispatch(setStatus("loading"))
-        fetch('http://localhost:5000/products')
+        fetch('https://obscure-eyrie-36427.herokuapp.com/products')
         .then( res=> res.json())
         .then( data => {
             dispatch(setAllProducts(data))

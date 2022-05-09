@@ -27,7 +27,7 @@ const Review = ({setReviewBtn, id}:{setReviewBtn:any, id: string}) => {
     const handleOnSubmit = (e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault()
         console.log(reviewData);
-        fetch('http://localhost:5000/reviews',{
+        fetch('https://obscure-eyrie-36427.herokuapp.com/reviews',{
             method:"POST",
             headers:{
                 "content-type":"application/json"

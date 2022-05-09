@@ -19,7 +19,7 @@ const CheckoutForm = ({data}:{data:IAddress}) => {
     const dispatch = useAppDispatch()
 
     useEffect( ()=>{
-        fetch(`http://localhost:5000/create-payment-intent`,{
+        fetch(`https://obscure-eyrie-36427.herokuapp.com/create-payment-intent`,{
             method: "POST",
             headers:{
                 "content-type":"application/json"
@@ -71,7 +71,7 @@ const CheckoutForm = ({data}:{data:IAddress}) => {
           }else{
               setPaymentError('')
               const orderData = {...data, transactionId: paymentIntent?.id};
-              fetch('http://localhost:5000/orders',{
+              fetch('https://obscure-eyrie-36427.herokuapp.com/orders',{
             method:"POST",
             headers:{
                 'content-type':'application/json'

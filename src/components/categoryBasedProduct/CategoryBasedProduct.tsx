@@ -18,7 +18,7 @@ const CategoryBasedProduct = () => {
     
     useEffect( ()=>{
         dispatch(setCategoryBasedProduct([]))
-        fetch(`http://localhost:5000/products/${category}`)
+        fetch(`https://obscure-eyrie-36427.herokuapp.com/products/${category}`)
         .then(res=>res.json())
         .then( (data:IProduct[]) => {
             setAllProduct(data)

@@ -18,7 +18,7 @@ const FilteredProducts = () => {
     useEffect( ()=>{
         dispatch(setCategoryBasedProduct([]))
         setDepartment(filter.department)
-        fetch(`http://localhost:5000/products`)
+        fetch(`https://obscure-eyrie-36427.herokuapp.com/products`)
         .then(res=>res.json())
         .then( (data:IProduct[]) => {
             setAllProduct(data)

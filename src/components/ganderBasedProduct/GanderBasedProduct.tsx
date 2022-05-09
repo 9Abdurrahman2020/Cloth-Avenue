@@ -16,7 +16,7 @@ const GanderBasedProduct = () => {
     
     useEffect( ()=>{
         dispatch(setCategoryBasedProduct([]))
-        fetch(`http://localhost:5000/products-for/${gander}`)
+        fetch(`https://obscure-eyrie-36427.herokuapp.com/products-for/${gander}`)
         .then(res=>res.json())
         .then( (data:IProduct[]) => {
             setAllProduct(data)

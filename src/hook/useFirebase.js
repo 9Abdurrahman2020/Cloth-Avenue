@@ -24,7 +24,7 @@ const useFirebase = () => {
 
   const roleCheckUp = (email) => {
     setRole("");
-    fetch(`http://localhost:5000/role/${email}`)
+    fetch(`https://obscure-eyrie-36427.herokuapp.com/role/${email}`)
       .then((res) => res.json())
       .then((data) => {
         setRole(data);
@@ -89,7 +89,7 @@ const useFirebase = () => {
   useEffect(() => {
     if (user) {
       if (role === null) {
-        fetch("http://localhost:5000/user", {
+        fetch("https://obscure-eyrie-36427.herokuapp.com/user", {
           method: "PUT",
           headers: {
             "content-type": "application/json",
@@ -97,7 +97,7 @@ const useFirebase = () => {
           body: JSON.stringify({ email: user.email, role: "user" }),
         });
       } else {
-        fetch("http://localhost:5000/user", {
+        fetch("https://obscure-eyrie-36427.herokuapp.com/user", {
           method: "PUT",
           headers: {
             "content-type": "application/json",

@@ -10,7 +10,7 @@ const PaymentSuccesful = () => {
     const [orderData, setOrderData] = useState<IAddress>({});
     const { firstName, lastName, address, product, transactionId } = orderData;
     useEffect( ()=>{
-        fetch(`http://localhost:5000/order/${id}`)
+        fetch(`https://obscure-eyrie-36427.herokuapp.com/order/${id}`)
         .then(res=>res.json())
         .then( data =>setOrderData(data))
     },[id])

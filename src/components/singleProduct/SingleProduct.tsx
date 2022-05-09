@@ -6,7 +6,7 @@ import { Button, Container, Row } from 'react-bootstrap';
 import InnerImageZoom from 'react-inner-image-zoom';
 import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css';
 import Rating from 'react-rating';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useAppDispatch, useAppSelector } from '../../app/store';
 import { setCartPrice, setCartProduct, setSingleProduct } from '../../features/counter/storeSlice';
@@ -31,11 +31,12 @@ const SingleProduct = () => {
     const product = useAppSelector( (state)=>state.singleProduct );
     const [ currentProduct, setCurrentProduct ] = useState<Boolean>(false)
     const [ reviewBtn, setReviewBtn ] = useState<Boolean>(false)
-    const [ reviews, setReviews ] = useState<Reviews[]>([])
+    const [ reviews, setReviews ] = useState<Reviews[]>([]);
+    const navigate = useNavigate();
     
     useEffect( ()=>{
         dispatch(setSingleProduct((initialProduct)));
-        fetch(`http://localhost:5000/product/${id}`)
+        fetch(`https://obscure-eyrie-36427.herokuapp.com/product/${id}`)
         .then(res=>res.json())
         .then( (data) => {
             dispatch(setSingleProduct((data)))
@@ -50,7 +51,7 @@ const SingleProduct = () => {
         }
     },[id])
     useEffect( ()=>{
-        fetch(`http://localhost:5000/reviews/${id}`)
+        fetch(`https://obscure-eyrie-36427.herokuapp.com/reviews/${id}`)
         .then(res=>res.json())
         .then( data => setReviews(data))
     },[id,reviewBtn])
@@ -98,7 +99,10 @@ const SingleProduct = () => {
             dispatch(setCartProduct({...product,price:parseFloat(price.toFixed(2)),quantity,size}))
         }
     }
-    
+    const buyBtnClickHandler = () =>{
+        dispatch(setCartProduct({...product,price:parseFloat(price.toFixed(2)),quantity,size}))
+        navigate(`/belling-address/${product._id}`)
+      }
     return (
         <Container className="">
             <Row className="g-5 py-5">
@@ -145,7 +149,7 @@ const SingleProduct = () => {
                             <button onClick={ cartProductHandler } className='btn btn-outline-danger w-100 my-2'><FontAwesomeIcon icon={faCartPlus}/> Add to Cart</button>
                         </div>
                         <div className="col-12 col-md-6">
-                            <button className='btn btn-danger w-100 my-2'>Buy it now</button>
+                            <button onClick={ buyBtnClickHandler } className='btn btn-danger w-100 my-2'>Buy it now</button>
                         </div>
                     </Row>
                 </div>

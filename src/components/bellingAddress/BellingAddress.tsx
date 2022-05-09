@@ -38,7 +38,7 @@ const BellingAddress = () => {
     }
     const handleFormSubmit = (e:React.FormEvent<HTMLFormElement>) =>{
         e.preventDefault()
-        fetch('http://localhost:5000/orders',{
+        fetch('https://obscure-eyrie-36427.herokuapp.com/orders',{
             method:"POST",
             headers:{
                 'content-type':'application/json'
