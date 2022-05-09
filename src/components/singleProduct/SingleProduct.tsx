@@ -104,7 +104,7 @@ const SingleProduct = () => {
         navigate(`/belling-address/${product._id}`)
       }
     return (
-        <Container className="">
+        <Container className="single-product-container">
             <Row className="g-5 py-5">
                 <div className="col-md-6">
                     <InnerImageZoom
@@ -164,7 +164,7 @@ const SingleProduct = () => {
                 <p className="my-1">- <span className='fw-bold'>Care & Cleaning :</span> Machine wash & Tumble dry</p>
             </div>
             <div className='my-5'>
-                <div className="review-button-container">
+                <div className="review-button-container px-2">
                     <div><h4>Reviews</h4></div>
                     <div><Button onClick={ ()=> setReviewBtn(!reviewBtn)} variant="danger">Write a review</Button></div>
                 </div>

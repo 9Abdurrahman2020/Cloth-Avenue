@@ -1,3 +1,6 @@
+.single-product-container{
+    overflow-x: hidden;
+}
 .loading-image-container{
     display: flex;
     justify-content: center;

@@ -45,7 +45,7 @@ const Review = ({setReviewBtn, id}:{setReviewBtn:any, id: string}) => {
     }
     
     return (
-        <div style={{transition:"all 0.4s"}} className='my-5'>
+        <div style={{transition:"all 0.4s"}} className='my-5 px-2'>
             <form onSubmit={handleOnSubmit}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Name</Form.Label>

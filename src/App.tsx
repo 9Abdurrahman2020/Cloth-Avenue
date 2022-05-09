@@ -65,7 +65,7 @@ function App() {
       }
       <Navigation/>
     </div>
-    <div style={{marginTop:"125px"}} className='main-body'>
+    <div className='main-body'>
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/product/:id" element={<SingleProduct/>}/>

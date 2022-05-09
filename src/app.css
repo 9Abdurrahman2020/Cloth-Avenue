@@ -1,0 +1,8 @@
+.main-body{
+    margin-top: 124px;
+}
+@media only screen and ( max-width: 768px) {
+    .main-body{
+        margin-top: 172px;
+    }
+}
