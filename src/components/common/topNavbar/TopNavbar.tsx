@@ -54,7 +54,7 @@ const TopNavbar = () => {
                             <sup>{cart.length}</sup>
                             <span style={{fontSize:"14px"}} className='ms-2'> ${cartPrice.toFixed(2)} </span>
                         <div className="cart-dropdown shadow">
-                        <div className="cart-product-section">
+                        <div className="cart-product-section p-2">
                         {
                             cart.length > 0 ? cart.map(pd => <SingleCartProduct key={pd._id} data={pd}/>) : <h5 className="text-success text-center">No product in your cart !</h5>
                         }

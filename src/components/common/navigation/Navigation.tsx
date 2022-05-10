@@ -74,7 +74,7 @@ const Navigation = () => {
                <div>
                 <p onClick={ ()=> setShow(!show)} className={`mobile my-0`} title="cart"><FontAwesomeIcon className='me-1' style={{fontSize:"20px"}} icon={faBagShopping}/><sup>{cart.length}</sup></p>
                 <div ref={cartRef} className={`cart-mobile-dropdown shadow ${show && 'cart-active'}`}>
-                    <div className="cart-product-section">
+                    <div className="cart-product-section p-3">
                     {
                         cart.length > 0 ? cart.map(pd => <SingleCartProduct key={pd._id} data={pd}/>) : <h5 className="text-success text-center">No product in your cart !</h5>
                     }
